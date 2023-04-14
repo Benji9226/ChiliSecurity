@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Button x:Name="GetAllGuides" Content="Button" HorizontalAlignment="Left" Margin="266,173,0,0" VerticalAlignment="Top" Click="GetAllGuides_Click"/>
 
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElearningApp.Persistence;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,15 @@ namespace ElearningApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        GuideRepository guideRepo = new GuideRepository();
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void GetAllGuides_Click(object sender, RoutedEventArgs e)
+        {
+            guideRepo.GetAllGuides();
         }
     }
 }
