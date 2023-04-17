@@ -1,6 +1,11 @@
 ﻿using ElearningApp.Persistence;
+using ElearningApp.ViewModel;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Path = System.IO.Path;
 
 namespace ElearningApp
 {
@@ -21,15 +27,30 @@ namespace ElearningApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        GuideController guideController = new GuideController();
         GuideRepository guideRepo = new GuideRepository();
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void GetAllGuides_Click(object sender, RoutedEventArgs e)
+        private void FileExplorerOpenButton_Click(object sender, RoutedEventArgs e)
         {
-            guideRepo.GetAllGuides();
+            OpenFileDialog FileExplorer = new OpenFileDialog();
+            FileExplorer.ShowDialog();
+            FileLocation.Text = FileExplorer.FileName;
+        }
+
+        private void FileUploadButton_Click(object sender, RoutedEventArgs e)
+        {
+            guideRepo.SaveFile(GuideName.Text, FileLocation.Text);
+            MessageBox.Show("Guiden er nu uploaded.");
+        }
+
+        private void GuideOneButton_Click(object sender, RoutedEventArgs e)
+        {
+            string guideName = GuideOneButton.Content.ToString();
+            guideController.LoadGuide(guideName);
         }
     }
 }
