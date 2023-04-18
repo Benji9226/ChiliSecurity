@@ -70,7 +70,7 @@ namespace ElearningApp.Persistence
             }
         }
 
-        public void SaveFile(string fileName, string filePath)
+        public void SaveFile(string guideName, string filePath)
         {
             using (Stream stream = File.OpenRead(filePath))
             {
@@ -82,7 +82,7 @@ namespace ElearningApp.Persistence
                 using (SqlConnection conn = new SqlConnection(ConnectionString))
                 {
                     SqlCommand cmd = new SqlCommand(sqlQuery, conn);
-                    cmd.Parameters.Add("@fileName", SqlDbType.NVarChar).Value = fileName;
+                    cmd.Parameters.Add("@fileName", SqlDbType.NVarChar).Value = guideName;
                     cmd.Parameters.Add("@learningMaterial", SqlDbType.VarBinary).Value = byteArray;
                     conn.Open();
                     cmd.ExecuteNonQuery();
