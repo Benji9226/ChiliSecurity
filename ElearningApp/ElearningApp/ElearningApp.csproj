@@ -23,9 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\ChiliSecurityLogo.png">
+    <Resource Include="Images\ChiliSecurityLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </Resource>
   </ItemGroup>
 
 </Project>

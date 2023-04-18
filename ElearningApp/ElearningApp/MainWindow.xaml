@@ -13,25 +13,26 @@
                 <GradientStop Color="#FFC80000" Offset="0.75"/>
             </LinearGradientBrush>
         </TabControl.Background>
-        <TabItem x:Name="HomeTab" Header="Home">
+        <TabItem x:Name="HomeTab" Header="Hjem">
             <Grid>
-                <Label x:Name="HomeTabGuideHeaderLabel" Content="Guides" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,25,0,0" Foreground="White" FontWeight="Bold" FontSize="24"/>
-                <Button x:Name="GuideOneButton" Content="Chili Installation" HorizontalAlignment="Left" Margin="75,100,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="GuideOneButton_Click"/>
-                <Button x:Name="GuideTwoButton" Content="GuideTwo" HorizontalAlignment="Left" Margin="350,100,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White"/>
-                <Button x:Name="GuideThreeButton" Content="GuideThree" HorizontalAlignment="Left" Margin="75,200,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White"/>
-                <Button x:Name="GuideFourButton" Content="GuideFour" HorizontalAlignment="Left" Margin="350,200,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White"/>
+                <Label x:Name="HomeTabGuideHeaderLabel" Content="Guides" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="325,25,0,0" Foreground="White" FontWeight="Bold" FontSize="24"/>
+                <Button x:Name="GuideOneButton" Content="Chili Installation" HorizontalAlignment="Left" Margin="150,100,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="GuideOneButton_Click"/>
+                <Button x:Name="GuideTwoButton" Content="GuideTwo" HorizontalAlignment="Left" Margin="400,100,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White"/>
+                <Button x:Name="GuideThreeButton" Content="GuideThree" HorizontalAlignment="Left" Margin="150,200,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White"/>
+                <Button x:Name="GuideFourButton" Content="GuideFour" HorizontalAlignment="Left" Margin="400,200,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White"/>
+                <Image x:Name="ChiliLogo" HorizontalAlignment="Left" Height="100" Margin="25,10,0,0" VerticalAlignment="Top" Width="100" Source="/Images/ChiliSecurityLogo.png"/>
             </Grid>
         </TabItem>
-        <TabItem x:Name="OverviewTab" Header="Overview">
+        <TabItem x:Name="OverviewTab" Header="Oversigt">
 
         </TabItem>
         <TabItem x:Name="AdminTab" Header="Admin">
             <Grid>
-                <Label x:Name="GuideNameLabel" Content="Guide Name:" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label x:Name="GuideNameLabel" Content="Guide Navn:" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Foreground="White"/>
                 <TextBox x:Name="GuideName" HorizontalAlignment="Left" Margin="25,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-                <Label x:Name="FileLocationLabel" Content="File Location" HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label x:Name="FileLocationLabel" Content="Fil Lokation" HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top" Foreground="White"/>
                 <TextBox x:Name="FileLocation" HorizontalAlignment="Left" Margin="25,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-                <Button x:Name="FileExplorerOpenButton" Content="Open" HorizontalAlignment="Left" Margin="25,125,0,0" VerticalAlignment="Top" Click="FileExplorerOpenButton_Click" Width="100"/>
+                <Button x:Name="FileExplorerOpenButton" Content="Vælg fil" HorizontalAlignment="Left" Margin="25,125,0,0" VerticalAlignment="Top" Click="FileExplorerOpenButton_Click" Width="100"/>
                 <Button x:Name="FileUploadButton" Content="Upload" HorizontalAlignment="Left" Margin="225,125,0,0" VerticalAlignment="Top" Width="100" Click="FileUploadButton_Click"/>
             </Grid>
         </TabItem>

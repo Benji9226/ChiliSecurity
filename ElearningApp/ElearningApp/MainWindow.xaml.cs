@@ -43,8 +43,15 @@ namespace ElearningApp
 
         private void FileUploadButton_Click(object sender, RoutedEventArgs e)
         {
-            guideRepo.SaveFile(GuideName.Text, FileLocation.Text);
-            MessageBox.Show("Guiden er nu uploaded.");
+            if (GuideName.Text != "" && FileLocation.Text != "")
+            {
+                guideRepo.SaveFile(GuideName.Text, FileLocation.Text);
+                MessageBox.Show("Guiden er nu uploaded.");
+            }
+            else if (GuideName.Text == "")
+                MessageBox.Show("FEJL: Guide ikke navngivet");
+            else
+                MessageBox.Show("FEJL: Ingen fil valgt");
         }
 
         private void GuideOneButton_Click(object sender, RoutedEventArgs e)
