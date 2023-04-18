@@ -17,11 +17,19 @@ namespace ElearningApp.Persistence
         private List<Guide> guides;
         string ConnectionString = "Server=10.56.8.36; database=P3_DB_2023_03; user id=P3_PROJECT_USER_03; password=OPENDB_03; TrustServerCertificate=true;";
 
+        /// <summary>
+        /// Guide repository constructor
+        /// Upon creation, fills up guide list with all guides from GetAllGuides() Method.
+        /// </summary>
         public GuideRepository()
         {
             GetAllGuides();
         }
 
+        /// <summary>
+        /// Functionality to get all guides.
+        /// </summary>
+        /// <returns>A List of all guide objects</returns>
         public List<Guide> GetAllGuides() 
         {
             guides = new List<Guide>();
@@ -48,6 +56,11 @@ namespace ElearningApp.Persistence
             return guides;
         }
 
+        /// <summary>
+        /// Gets a specific guide from parameter guideName.
+        /// </summary>
+        /// <param name="guideName"></param>
+        /// <returns>A guide object</returns>
         public Guide GetByName(string guideName)
         {
             foreach (Guide guide in guides)
@@ -60,6 +73,11 @@ namespace ElearningApp.Persistence
             return null;
         }
 
+        /// <summary>
+        /// Method for saving a given guide to the database and into the local repository.
+        /// </summary>
+        /// <param name="guideName"></param>
+        /// <param name="filePath"></param>
         public void SaveFile(string guideName, string filePath)
         {
             // Adds guide to database
