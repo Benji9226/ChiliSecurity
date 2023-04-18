@@ -77,12 +77,13 @@ namespace ElearningApp.Persistence
                 byte[] byteArray = new byte[stream.Length];
                 stream.Read(byteArray, 0, byteArray.Length);
 
-                string sqlQuery = "INSERT INTO Guide(GuideName, LearningMaterial) VALUES(@fileName, @learningMaterial)";
+                //Spørg Leif hvordan man skal tildele variabler ordenligt
+                string sqlQuery = "INSERT INTO Guide(GuideName, LearningMaterial) VALUES(@guideName, @learningMaterial)";
 
                 using (SqlConnection conn = new SqlConnection(ConnectionString))
                 {
                     SqlCommand cmd = new SqlCommand(sqlQuery, conn);
-                    cmd.Parameters.Add("@fileName", SqlDbType.NVarChar).Value = guideName;
+                    cmd.Parameters.Add("@guideName", SqlDbType.NVarChar).Value = guideName;
                     cmd.Parameters.Add("@learningMaterial", SqlDbType.VarBinary).Value = byteArray;
                     conn.Open();
                     cmd.ExecuteNonQuery();

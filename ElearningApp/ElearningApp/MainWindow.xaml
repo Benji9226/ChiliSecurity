@@ -29,7 +29,7 @@
                 <Label x:Name="GuideNameLabel" Content="Guide Navn:" HorizontalAlignment="Left" Margin="200,44,0,0" VerticalAlignment="Top" Foreground="White"/>
                 <TextBox x:Name="GuideName" HorizontalAlignment="Left" Margin="200,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
                 <Label x:Name="FileLocationLabel" Content="Fil Lokation" HorizontalAlignment="Left" Margin="204,109,0,0" VerticalAlignment="Top" Foreground="White"/>
-                <TextBox x:Name="FileLocation" HorizontalAlignment="Left" Margin="200,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
+                <TextBox x:Name="FilePath" HorizontalAlignment="Left" Margin="200,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
                 <Button x:Name="FileExplorerOpenButton" Content="Vælg fil" HorizontalAlignment="Left" Margin="200,179,0,0" VerticalAlignment="Top" Click="FileExplorerOpenButton_Click" Width="100"/>
                 <Button x:Name="FileUploadButton" Content="Upload" HorizontalAlignment="Left" Margin="402,179,0,0" VerticalAlignment="Top" Width="100" Click="FileUploadButton_Click"/>
                 <Rectangle HorizontalAlignment="Left" Height="432" Margin="-14,22,0,0" Stroke="Black" VerticalAlignment="Top" Width="154" Fill="Black"/>

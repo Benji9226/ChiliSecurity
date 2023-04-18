@@ -38,14 +38,14 @@ namespace ElearningApp
         {
             OpenFileDialog FileExplorer = new OpenFileDialog();
             FileExplorer.ShowDialog();
-            FileLocation.Text = FileExplorer.FileName;
+            FilePath.Text = FileExplorer.FileName;
         }
 
         private void FileUploadButton_Click(object sender, RoutedEventArgs e)
         {
-            if (GuideName.Text != "" && FileLocation.Text != "")
+            if (GuideName.Text != "" && FilePath.Text != "")
             {
-                guideRepo.SaveFile(GuideName.Text, FileLocation.Text);
+                guideRepo.SaveFile(GuideName.Text, FilePath.Text);
                 MessageBox.Show("Guiden er nu uploaded.");
             }
             else if (GuideName.Text == "")
