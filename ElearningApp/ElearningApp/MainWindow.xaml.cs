@@ -1,4 +1,5 @@
-﻿using ElearningApp.Persistence;
+﻿using ElearningApp.Model;
+using ElearningApp.Persistence;
 using ElearningApp.ViewModel;
 using Microsoft.Win32;
 using System;
@@ -29,6 +30,7 @@ namespace ElearningApp
     {
         GuideController guideController = new GuideController();
         GuideRepository guideRepo = new GuideRepository();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -43,21 +45,12 @@ namespace ElearningApp
 
         private void FileUploadButton_Click(object sender, RoutedEventArgs e)
         {
-            if (GuideName.Text != "" && FilePath.Text != "")
-            {
-                guideRepo.SaveFile(GuideName.Text, FilePath.Text);
-                MessageBox.Show("Guiden er nu uploaded.");
-            }
-            else if (GuideName.Text == "")
-                MessageBox.Show("FEJL: Guide ikke navngivet");
-            else
-                MessageBox.Show("FEJL: Ingen fil valgt");
+            guideController.UploadGuide(GuideName.Text, FilePath.Text);
         }
 
         private void GuideOneButton_Click(object sender, RoutedEventArgs e)
         {
-            string guideName = GuideOneButton.Content.ToString();
-            guideController.LoadGuide(guideName);
+            guideController.LoadGuide(guideRepo.GetByName("Chili Installation"));
         }
     }
 }

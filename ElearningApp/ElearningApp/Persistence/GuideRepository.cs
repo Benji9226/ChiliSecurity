@@ -15,9 +15,12 @@ namespace ElearningApp.Persistence
     {
 
         private List<Guide> guides;
-
         string ConnectionString = "Server=10.56.8.36; database=P3_DB_2023_03; user id=P3_PROJECT_USER_03; password=OPENDB_03; TrustServerCertificate=true;";
 
+        public GuideRepository()
+        {
+            GetAllGuides();
+        }
 
         public List<Guide> GetAllGuides() 
         {
@@ -31,12 +34,12 @@ namespace ElearningApp.Persistence
                 using (SqlDataReader reader = cmd.ExecuteReader()) 
                 {
 
-                    while (reader.Read()) 
+                    while (reader.Read())
                     {
                         Guide guide = new Guide
                         {
                             GuideName = reader["GuideName"].ToString(),
-                            LearningMaterial = reader["LearningMaterial"].ToString(),
+                            LearningMaterial = (byte[])reader["LearningMaterial"]
                         };
                         guides.Add(guide);  
                     }
@@ -45,33 +48,21 @@ namespace ElearningApp.Persistence
             return guides;
         }
 
-        public void CreateGuide(string guideName) 
+        public Guide GetByName(string guideName)
         {
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            foreach (Guide guide in guides)
             {
-                conn.Open();
-
-                string query = $"SELECT LearningMaterial FROM Guide WHERE GuideName = '{guideName}'";
-                using SqlCommand cmd = new SqlCommand(query);
-                cmd.Connection = conn;
-
-                var reader = cmd.ExecuteReader();
-
-                while (reader.Read())
+                if (guide.GuideName == guideName)
                 {
-                    var data = (byte[])reader["LearningMaterial"];
-                    if (data == null) throw new Exception("Contents is null");
-
-                    using (BinaryWriter writer = new BinaryWriter(File.OpenWrite(Path.Combine($"{guideName}.pdf"))))
-                    {
-                        writer.Write(data);
-                    }
+                    return guide;
                 }
             }
+            return null;
         }
 
         public void SaveFile(string guideName, string filePath)
         {
+            // Adds guide to database
             using (Stream stream = File.OpenRead(filePath))
             {
                 byte[] byteArray = new byte[stream.Length];
@@ -88,6 +79,15 @@ namespace ElearningApp.Persistence
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
+
+                // Adds guide to local repo
+                Guide guide = new Guide
+                {
+                    GuideName = guideName,
+                    LearningMaterial = byteArray
+                };
+
+                guides.Add(guide);
             }
         }
 

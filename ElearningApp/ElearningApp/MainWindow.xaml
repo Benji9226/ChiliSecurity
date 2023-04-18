@@ -13,7 +13,7 @@
                 <GradientStop Color="#FFC80000" Offset="0.75"/>
             </LinearGradientBrush>
         </TabControl.Background>
-        <TabItem x:Name="HomeTab" Header="Hjem" Margin="96,162,-96,-162">
+        <TabItem x:Name="HomeTab" Header="Hjem" Margin="62,162,-100,-162">
             <Grid Margin="0,-5,0,-2">
                 <Label x:Name="HomeTabGuideHeaderLabel" Content="Guides" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="446,29,0,0" Foreground="White" FontWeight="Bold" FontSize="24"/>
                 <Button x:Name="GuideOneButton" Content="Chili Installation" HorizontalAlignment="Left" Margin="254,128,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="GuideOneButton_Click"/>
@@ -24,7 +24,7 @@
                 <Image x:Name="ChiliLogo" HorizontalAlignment="Left" Height="100" Margin="21,10,0,0" VerticalAlignment="Top" Width="100" Source="/Images/ChiliSecurityLogo.png"/>
             </Grid>
         </TabItem>
-        <TabItem x:Name="AdminTab" Header="Admin" Margin="96,300,-96,-304">
+        <TabItem x:Name="AdminTab" Header="Admin" Margin="68,300,-98,-304">
             <Grid Margin="0,-15,0,-2">
                 <Label x:Name="GuideNameLabel" Content="Guide Navn:" HorizontalAlignment="Left" Margin="200,44,0,0" VerticalAlignment="Top" Foreground="White"/>
                 <TextBox x:Name="GuideName" HorizontalAlignment="Left" Margin="200,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>

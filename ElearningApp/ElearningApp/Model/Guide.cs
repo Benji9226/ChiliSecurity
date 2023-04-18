@@ -11,7 +11,7 @@ namespace ElearningApp.Model
     {
         public string GuideName { get; set; }
 
-        public string LearningMaterial { get; set; }
+        public byte[] LearningMaterial { get; set; }
 
       
     }
