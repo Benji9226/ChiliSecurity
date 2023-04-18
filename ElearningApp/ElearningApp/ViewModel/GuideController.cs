@@ -20,8 +20,8 @@ namespace ElearningApp.ViewModel
 
         public void LoadGuide(string guideName)
         {
-            if (!File.Exists($@"Guides\{guideName}.pdf")) { guideRepo.CreateGuide(guideName); }
-            Process.Start(new ProcessStartInfo($@"Guides\{guideName}.pdf") { UseShellExecute = true });
+            if (!File.Exists($"{guideName}.pdf")) { guideRepo.CreateGuide(guideName); }
+            Process.Start(new ProcessStartInfo($"{guideName}.pdf") { UseShellExecute = true });
         }
     }
 }

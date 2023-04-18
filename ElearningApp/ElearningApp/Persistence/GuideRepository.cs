@@ -68,7 +68,7 @@ namespace ElearningApp.Persistence
                     var data = (byte[])reader["LearningMaterial"];
                     if (data == null) throw new Exception("Contents is null");
 
-                    using (BinaryWriter writer = new BinaryWriter(File.OpenWrite(Path.Combine($@"Guides\{guideName}.pdf"))))
+                    using (BinaryWriter writer = new BinaryWriter(File.OpenWrite(Path.Combine($"{guideName}.pdf"))))
                     {
                         writer.Write(data);
                     }
