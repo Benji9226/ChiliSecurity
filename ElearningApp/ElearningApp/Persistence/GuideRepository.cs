@@ -19,12 +19,6 @@ namespace ElearningApp.Persistence
         string ConnectionString = "Server=10.56.8.36; database=P3_DB_2023_03; user id=P3_PROJECT_USER_03; password=OPENDB_03; TrustServerCertificate=true;";
 
 
-        public void Add() 
-        {
-
-        }
-
-
         public List<Guide> GetAllGuides() 
         {
             guides = new List<Guide>();
@@ -76,10 +70,6 @@ namespace ElearningApp.Persistence
             }
         }
 
-        public void Update() 
-        {
-
-        }
         public void SaveFile(string fileName, string filePath)
         {
             using (Stream stream = File.OpenRead(filePath))
