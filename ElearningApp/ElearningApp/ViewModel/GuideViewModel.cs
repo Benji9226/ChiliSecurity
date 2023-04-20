@@ -13,7 +13,7 @@ using System.Windows.Controls;
 
 namespace ElearningApp.ViewModel
 {
-    public class GuideController
+    public class GuideViewModel
     {
         GuideRepository guideRepo = new GuideRepository();
 

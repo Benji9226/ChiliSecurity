@@ -28,7 +28,7 @@ namespace ElearningApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        GuideController guideController = new GuideController();
+        GuideViewModel guideViewModel = new GuideViewModel();
         GuideRepository guideRepo = new GuideRepository();
 
         public MainWindow()
@@ -45,12 +45,12 @@ namespace ElearningApp
 
         private void FileUploadButton_Click(object sender, RoutedEventArgs e)
         {
-            guideController.UploadGuide(GuideName.Text, FilePath.Text);
+            guideViewModel.UploadGuide(GuideName.Text, FilePath.Text);
         }
 
         private void GuideOneButton_Click(object sender, RoutedEventArgs e)
         {
-            guideController.LoadGuide(guideRepo.GetByName("Chili Installation"));
+            guideViewModel.LoadGuide(guideRepo.GetByName("Chili Installation"));
         }
     }
 }
