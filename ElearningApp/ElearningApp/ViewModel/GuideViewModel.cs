@@ -37,8 +37,19 @@ namespace ElearningApp.ViewModel
         {
             if (guideName != "" && filePath != "")
             {
-                guideRepo.SaveFile(guideName, filePath);
-                MessageBox.Show("Guiden er nu uploaded.");
+                foreach (Guide guide in guideRepo.GetAllGuides())
+                {
+                    if (guideName == guide.GuideName)
+                    {
+                        MessageBox.Show("Navnet eksistere allerede");
+                    }
+                    else 
+                    {
+                        guideRepo.SaveFile(guideName, filePath);
+                        MessageBox.Show("Guiden er nu uploaded.");
+                    }
+                        
+                }
             }
             else if (guideName == "")
                 MessageBox.Show("FEJL: Guide ikke navngivet");
