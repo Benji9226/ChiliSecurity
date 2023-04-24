@@ -2,6 +2,7 @@
 using ElearningApp.Persistence;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
@@ -17,27 +18,18 @@ namespace ElearningApp.ViewModel
     {
         GuideRepository guideRepo = new GuideRepository();
 
-        /// <summary>
-        /// Method for loading a selected guide so it can be opened. If a file is not yet created, the method
-        /// calls a helping method to create a guide file in the system so that it can be representet as intended.
-        /// </summary>
-        /// <param name="guide"></param>
-        public void LoadGuide(Guide guide)
+        public void LoadGuide(string guideToLoad)
         {
+            Guide guide = guideRepo.GetByName(guideToLoad);
             if (!File.Exists($"{guide.GuideName}.pdf")) { CreateGuideFile(guide.GuideName); }
             ShowGuide(guide);
         }
 
-        /// <summary>
-        /// Method to Upload a guide to the system with a guide name and the path of the file to be uploaded.
-        /// </summary>
-        /// <param name="guideName"></param>
-        /// <param name="filePath"></param>
         public void UploadGuide(string guideName, string filePath)
         {
             if (guideName != "" && filePath != "")
             {
-                foreach (Guide guide in guideRepo.GetAllGuides())
+                foreach (Guide guide in guideRepo.GetAll())
                 {
                     if (guideName == guide.GuideName)
                     {
@@ -45,7 +37,14 @@ namespace ElearningApp.ViewModel
                     }
                     else 
                     {
-                        guideRepo.SaveFile(guideName, filePath);
+                        using (Stream stream = File.OpenRead(filePath))
+                        {
+                            byte[] byteArray = new byte[stream.Length];
+                            stream.Read(byteArray, 0, byteArray.Length);
+
+                            Guide guideToAdd = new Guide(guideName, byteArray);
+                            guideRepo.Add(guideToAdd);
+                        }
                         MessageBox.Show("Guiden er nu uploaded.");
                     }
                         
@@ -57,10 +56,11 @@ namespace ElearningApp.ViewModel
                 MessageBox.Show("FEJL: Ingen fil valgt");
         }
 
-        /// <summary>
-        /// Helping method to Create a PDF guide file if one does not exist in the system.
-        /// </summary>
-        /// <param name="guideName"></param>
+        public Guide GetGuide(string guideToGet)
+        {
+            return guideRepo.GetByName(guideToGet);
+        }
+
         private void CreateGuideFile(string guideName)
         {
             byte[] data = guideRepo.GetByName(guideName).LearningMaterial;
@@ -70,10 +70,6 @@ namespace ElearningApp.ViewModel
             }
         }
 
-        /// <summary>
-        /// Helping method to run the process which opens up the PDF file for the user to read.
-        /// </summary>
-        /// <param name="guide"></param>
         private void ShowGuide(Guide guide)
         {
             Process.Start(new ProcessStartInfo($"{guide.GuideName}.pdf") { UseShellExecute = true });

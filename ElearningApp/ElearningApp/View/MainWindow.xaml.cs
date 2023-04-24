@@ -1,6 +1,4 @@
-﻿using ElearningApp.Model;
-using ElearningApp.Persistence;
-using ElearningApp.ViewModel;
+﻿using ElearningApp.ViewModel;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -28,8 +26,7 @@ namespace ElearningApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        GuideViewModel guideViewModel = new GuideViewModel();
-        GuideRepository guideRepo = new GuideRepository();
+        GuideViewModel guideVM = new GuideViewModel();
 
         public MainWindow()
         {
@@ -45,12 +42,12 @@ namespace ElearningApp
 
         private void FileUploadButton_Click(object sender, RoutedEventArgs e)
         {
-            guideViewModel.UploadGuide(GuideName.Text, FilePath.Text);
+            guideVM.UploadGuide(GuideName.Text, FilePath.Text);
         }
 
-        private void GuideOneButton_Click(object sender, RoutedEventArgs e)
+        private void ChiliInstallationButton_Click(object sender, RoutedEventArgs e)
         {
-            guideViewModel.LoadGuide(guideRepo.GetByName("Chili Installation"));
+            guideVM.LoadGuide(chiliInstallationButton.Content.ToString());
         }
     }
 }

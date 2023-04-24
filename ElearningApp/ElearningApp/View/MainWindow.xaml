@@ -16,10 +16,10 @@
         <TabItem x:Name="HomeTab" Header="Hjem" Margin="74,162,-112,-162">
             <Grid Margin="0,-5,0,-2">
                 <Label x:Name="HomeTabGuideHeaderLabel" Content="Guides" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="436,29,0,0" Foreground="White" FontWeight="Bold" FontSize="24"/>
-                <Button x:Name="GuideOneButton" Content="Chili Installation" HorizontalAlignment="Left" Margin="254,128,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="GuideOneButton_Click"/>
-                <Button x:Name="GuideTwoButton" Content="GuideTwo" HorizontalAlignment="Left" Margin="531,128,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White"/>
-                <Button x:Name="GuideThreeButton" Content="GuideThree" HorizontalAlignment="Left" Margin="254,298,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White"/>
-                <Button x:Name="GuideFourButton" Content="GuideFour" HorizontalAlignment="Left" Margin="531,298,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White"/>
+                <Button x:Name="chiliInstallationButton" Content="Chili Installation" HorizontalAlignment="Left" Margin="254,128,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="ChiliInstallationButton_Click"/>
+                <Button x:Name="guideTwoButton" Content="GuideTwo" HorizontalAlignment="Left" Margin="531,128,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White"/>
+                <Button x:Name="guideThreeButton" Content="GuideThree" HorizontalAlignment="Left" Margin="254,298,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White"/>
+                <Button x:Name="guideFourButton" Content="GuideFour" HorizontalAlignment="Left" Margin="531,298,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White"/>
                 <Rectangle HorizontalAlignment="Left" Height="444" Margin="-14,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="154" Fill="Black"/>
                 <Image x:Name="ChiliLogo" HorizontalAlignment="Left" Height="100" Margin="21,10,0,0" VerticalAlignment="Top" Width="100" Source="/Images/ChiliSecurityLogo.png"/>
             </Grid>

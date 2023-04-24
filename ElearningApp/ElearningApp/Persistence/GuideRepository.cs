@@ -15,26 +15,31 @@ namespace ElearningApp.Persistence
     {
 
         private List<Guide> guides;
-        string ConnectionString = "Server=10.56.8.36; database=P3_DB_2023_03; user id=P3_PROJECT_USER_03; password=OPENDB_03; TrustServerCertificate=true;";
+        string connectionString = "Server=10.56.8.36; database=P3_DB_2023_03; user id=P3_PROJECT_USER_03; password=OPENDB_03; TrustServerCertificate=true;";
 
-        /// <summary>
-        /// Guide repository constructor
-        /// Upon creation, fills up guide list with all guides from GetAllGuides() Method.
-        /// </summary>
         public GuideRepository()
         {
-            GetAllGuides();
+            guides = GetAll();
         }
 
-        /// <summary>
-        /// Functionality to get all guides.
-        /// </summary>
-        /// <returns>A List of all guide objects</returns>
-        public List<Guide> GetAllGuides() 
+        public void Add(Guide guideToAdd)
         {
-            guides = new List<Guide>();
+            guides.Add(guideToAdd);
+            string sqlQuery = "INSERT INTO Guide(GuideName, LearningMaterial) VALUES(@guideName, @learningMaterial)";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+                cmd.Parameters.Add("@guideName", SqlDbType.NVarChar).Value = guideToAdd.GuideName;
+                cmd.Parameters.Add("@learningMaterial", SqlDbType.VarBinary).Value = guideToAdd.LearningMaterial;
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
 
-            using(SqlConnection conn = new SqlConnection(ConnectionString)) 
+        public List<Guide> GetAll()
+        {
+            List<Guide> guides = new List<Guide>();
+            using(SqlConnection conn = new SqlConnection(connectionString)) 
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Guide", conn);
@@ -44,11 +49,7 @@ namespace ElearningApp.Persistence
 
                     while (reader.Read())
                     {
-                        Guide guide = new Guide
-                        {
-                            GuideName = reader["GuideName"].ToString(),
-                            LearningMaterial = (byte[])reader["LearningMaterial"]
-                        };
+                        Guide guide = new Guide(reader["GuideName"].ToString(), (byte[])reader["LearningMaterial"]);
                         guides.Add(guide);  
                     }
                 }
@@ -56,16 +57,11 @@ namespace ElearningApp.Persistence
             return guides;
         }
 
-        /// <summary>
-        /// Gets a specific guide from parameter guideName.
-        /// </summary>
-        /// <param name="guideName"></param>
-        /// <returns>A guide object</returns>
-        public Guide GetByName(string guideName)
+        public Guide GetByName(string guideToGetName)
         {
             foreach (Guide guide in guides)
             {
-                if (guide.GuideName == guideName)
+                if (guide.GuideName == guideToGetName)
                 {
                     return guide;
                 }
@@ -73,46 +69,31 @@ namespace ElearningApp.Persistence
             return null;
         }
 
-        /// <summary>
-        /// Method for saving a given guide to the database and into the local repository.
-        /// </summary>
-        /// <param name="guideName"></param>
-        /// <param name="filePath"></param>
-        public void SaveFile(string guideName, string filePath)
+        public void Update(Guide guideToUpdate, string updatedGuideName, byte[] updatedLearningMaterial)
         {
-            // Adds guide to database
-            using (Stream stream = File.OpenRead(filePath))
+            foreach (Guide guide in guides)
             {
-                byte[] byteArray = new byte[stream.Length];
-                stream.Read(byteArray, 0, byteArray.Length);
-
-                //Spørg Leif hvordan man skal tildele variabler ordenligt
-                string sqlQuery = "INSERT INTO Guide(GuideName, LearningMaterial) VALUES(@guideName, @learningMaterial)";
-
-                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                if (guide.GuideName == guideToUpdate.GuideName && guide.LearningMaterial == guideToUpdate.LearningMaterial)
                 {
-                    SqlCommand cmd = new SqlCommand(sqlQuery, conn);
-                    cmd.Parameters.Add("@guideName", SqlDbType.NVarChar).Value = guideName;
-                    cmd.Parameters.Add("@learningMaterial", SqlDbType.VarBinary).Value = byteArray;
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
+                    // TODO: Implement for DB
+                    guide.GuideName = updatedGuideName;
+                    guide.LearningMaterial = updatedLearningMaterial;
+                    break;
                 }
-
-                // Adds guide to local repo
-                Guide guide = new Guide
-                {
-                    GuideName = guideName,
-                    LearningMaterial = byteArray
-                };
-
-                guides.Add(guide);
             }
         }
 
-        public void Delete() 
+        public void Delete(Guide guideToDelete) 
         {
-        
+            foreach (Guide guide in guides)
+            {
+                if (guide.GuideName == guideToDelete.GuideName && guide.LearningMaterial == guideToDelete.LearningMaterial)
+                {
+                    // TODO: Implement for DB
+                    guides.Remove(guide);
+                    break;
+                }
+            }
         }
-
     }
 }
