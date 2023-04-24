@@ -73,7 +73,7 @@ namespace ElearningApp.ViewModel
                 MessageBox.Show("FEJL: Ingen kategori valgt");
         }
 
-        //THIS METHOD MIGHT NOT EVEN BE NEEDED ANYMORE.
+        //THIS METHOD IS NOT NEEDED (Maybe Delete?).
         //
         //public Guide GetGuide(string guideToGetName, string guideToGetCategory)
         //{
@@ -83,7 +83,7 @@ namespace ElearningApp.ViewModel
         private void CreateGuideFile(string guideName, string guideCategory)
         {
             byte[] data = guideRepo.GetByNameAndCategory(guideName, guideCategory).LearningMaterial;
-            System.IO.Directory.CreateDirectory("Guides").CreateSubdirectory(guideCategory);
+            Directory.CreateDirectory("Guides").CreateSubdirectory(guideCategory);
             using (BinaryWriter writer = new BinaryWriter(File.OpenWrite($"Guides\\{guideCategory}\\{guideName}.pdf")))
             {
                 writer.Write(data);
