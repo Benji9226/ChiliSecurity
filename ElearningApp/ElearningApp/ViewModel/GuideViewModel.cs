@@ -17,6 +17,20 @@ namespace ElearningApp.ViewModel
     public class GuideViewModel
     {
         GuideRepository guideRepo = new GuideRepository();
+        private Guide guide;
+        public string GuideName { get; set; }
+        public byte[] LearningMaterial { get; set; }
+
+        public GuideViewModel()
+        {
+        }
+
+        public GuideViewModel(Guide guide)
+        {
+            this.guide = guide;
+            GuideName = guide.GuideName;
+            LearningMaterial = guide.LearningMaterial;
+        }
 
         public void LoadGuide(string guideToLoad)
         {
@@ -70,9 +84,9 @@ namespace ElearningApp.ViewModel
             }
         }
 
-        private void ShowGuide(Guide guide)
+        private void ShowGuide(Guide guideToShow)
         {
-            Process.Start(new ProcessStartInfo($"{guide.GuideName}.pdf") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo($"{guideToShow.GuideName}.pdf") { UseShellExecute = true });
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ElearningApp.ViewModel;
+﻿using ElearningApp.View;
+using ElearningApp.ViewModel;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -45,9 +46,28 @@ namespace ElearningApp
             guideVM.UploadGuide(GuideName.Text, FilePath.Text);
         }
 
-        private void ChiliInstallationButton_Click(object sender, RoutedEventArgs e)
+        private void ChiliButton_Click(object sender, RoutedEventArgs e)
         {
-            guideVM.LoadGuide(chiliInstallationButton.Content.ToString());
+            ChiliWindow chiliWindow = new ChiliWindow();
+            chiliWindow.Show();
+        }
+
+        private void EWIIButton_Click(object sender, RoutedEventArgs e)
+        {
+            EWIIWindow ewiiWindow = new EWIIWindow();
+            ewiiWindow.Show();
+        }
+
+        private void EnergiFynButton_Click(object sender, RoutedEventArgs e)
+        {
+            EnergiFynWindow energiFynWindow = new EnergiFynWindow();
+            energiFynWindow.Show();
+        }
+
+        private void FlatPayButton_Click(object sender, RoutedEventArgs e)
+        {
+            FlatPayWindow FlatPayWindow = new FlatPayWindow();
+            FlatPayWindow.Show();
         }
     }
 }
