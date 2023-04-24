@@ -10,7 +10,7 @@
         <TabControl.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="Black"/>
-                <GradientStop Color="#FFC80000" Offset="0.75"/>
+                <GradientStop Color="#e21643" Offset="1"/>
             </LinearGradientBrush>
         </TabControl.Background>
         <TabItem x:Name="HomeTab" Header="Hjem" Margin="74,162,-112,-162">

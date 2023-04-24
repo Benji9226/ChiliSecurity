@@ -27,7 +27,7 @@ namespace ElearningApp.View
             DataContext = mvm;
         }
 
-        private void openSelectedPdfButton_Click(object sender, RoutedEventArgs e)
+        private void OpenSelectedPdfButton_Click(object sender, RoutedEventArgs e)
         {
             string guideToLoadName = mvm.SelectedGuideVM.GuideName;
             string guideToLoadCategory = mvm.SelectedGuideVM.Category;
