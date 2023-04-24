@@ -30,6 +30,7 @@ namespace ElearningApp
     {
         GuideViewModel guideViewModel = new GuideViewModel();
         GuideRepository guideRepo = new GuideRepository();
+        QuizWindow qw = new QuizWindow();
 
         public MainWindow()
         {
@@ -50,7 +51,13 @@ namespace ElearningApp
 
         private void GuideOneButton_Click(object sender, RoutedEventArgs e)
         {
-            guideViewModel.LoadGuide(guideRepo.GetByName("Chili Installation"));
+           // guideViewModel.LoadGuide(guideRepo.GetByName("Chili Installation"));
+
+        }
+
+        private void Quiz_Click(object sender, RoutedEventArgs e)
+        {
+            qw.ShowDialog();
         }
     }
 }

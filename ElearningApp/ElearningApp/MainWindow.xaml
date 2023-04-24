@@ -22,6 +22,7 @@
                 <Button x:Name="GuideFourButton" Content="GuideFour" HorizontalAlignment="Left" Margin="531,298,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White"/>
                 <Rectangle HorizontalAlignment="Left" Height="444" Margin="-14,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="154" Fill="Black"/>
                 <Image x:Name="ChiliLogo" HorizontalAlignment="Left" Height="100" Margin="21,10,0,0" VerticalAlignment="Top" Width="100" Source="/Images/ChiliSecurityLogo.png"/>
+                <Button x:Name="Quiz" Content="Quiz" HorizontalAlignment="Left" Margin="478,266,0,0" VerticalAlignment="Top" Click="Quiz_Click"/>
             </Grid>
         </TabItem>
         <TabItem x:Name="AdminTab" Header="Admin" Margin="72,300,-112,-304">
