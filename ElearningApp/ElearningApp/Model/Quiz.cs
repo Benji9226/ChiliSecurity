@@ -12,5 +12,7 @@ namespace ElearningApp.Model
 
         public int Result { get; set; }
 
+        public string GuideName { get; set; }
+
     }
 }
