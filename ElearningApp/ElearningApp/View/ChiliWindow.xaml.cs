@@ -29,8 +29,9 @@ namespace ElearningApp.View
 
         private void openSelectedPdfButton_Click(object sender, RoutedEventArgs e)
         {
-            string guideToLoad = mvm.SelectedGuideVM.GuideName;
-            mvm.SelectedGuideVM.LoadGuide(guideToLoad);
+            string guideToLoadName = mvm.SelectedGuideVM.GuideName;
+            string guideToLoadCategory = mvm.SelectedGuideVM.Category;
+            mvm.SelectedGuideVM.LoadGuide(guideToLoadName, guideToLoadCategory);
         }
     }
 }

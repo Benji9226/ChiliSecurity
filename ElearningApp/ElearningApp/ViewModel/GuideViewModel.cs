@@ -34,10 +34,11 @@ namespace ElearningApp.ViewModel
             Category = guide.Category;
         }
 
-        public void LoadGuide(string guideToLoad)
+        public void LoadGuide(string guideToLoadName, string guideToLoadCategory)
         {
-            Guide guide = guideRepo.GetByName(guideToLoad);
-            if (!File.Exists($"{guide.GuideName}.pdf")) { CreateGuideFile(guide.GuideName); }
+            Guide guide = guideRepo.GetByNameAndCategory(guideToLoadName, guideToLoadCategory);
+            if (!File.Exists($"Guides\\{guideToLoadCategory}\\{guide.GuideName}.pdf")) { CreateGuideFile(guide.GuideName, guide.Category); }
+            CreateGuideFile(guide.GuideName, guide.Category);
             ShowGuide(guide);
         }
 
@@ -72,15 +73,17 @@ namespace ElearningApp.ViewModel
                 MessageBox.Show("FEJL: Ingen kategori valgt");
         }
 
-        public Guide GetGuide(string guideToGet)
-        {
-            return guideRepo.GetByName(guideToGet);
-        }
+        //THIS METHOD MIGHT NOT EVEN BE NEEDED ANYMORE.
+        //
+        //public Guide GetGuide(string guideToGetName, string guideToGetCategory)
+        //{
+        //    return guideRepo.GetByNameAndCategory(guideToGetName, guideToGetCategory);
+        //}
 
-        private void CreateGuideFile(string guideName)
+        private void CreateGuideFile(string guideName, string guideCategory)
         {
-            byte[] data = guideRepo.GetByName(guideName).LearningMaterial;
-            using (BinaryWriter writer = new BinaryWriter(File.OpenWrite($"{guideName}.pdf")))
+            byte[] data = guideRepo.GetByNameAndCategory(guideName, guideCategory).LearningMaterial;
+            using (BinaryWriter writer = new BinaryWriter(File.OpenWrite($"Guides\\{guideCategory}\\{guideName}.pdf")))
             {
                 writer.Write(data);
             }
@@ -88,7 +91,8 @@ namespace ElearningApp.ViewModel
 
         private void ShowGuide(Guide guideToShow)
         {
-            Process.Start(new ProcessStartInfo($"{guideToShow.GuideName}.pdf") { UseShellExecute = true });
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Guides\\{guideToShow.Category}\\{guideToShow.GuideName}.pdf");
+            Process.Start( new ProcessStartInfo(filePath) { UseShellExecute = true } );
         }
     }
 }

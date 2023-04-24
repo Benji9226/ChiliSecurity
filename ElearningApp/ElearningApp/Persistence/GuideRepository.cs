@@ -58,16 +58,16 @@ namespace ElearningApp.Persistence
             return guides;
         }
 
-        public Guide GetByName(string guideToGetName)
+        public Guide GetByNameAndCategory(string guideToGetName, string guideToGetCategory)
         {
             foreach (Guide guide in guides)
             {
-                if (guide.GuideName == guideToGetName)
+                if (guide.GuideName == guideToGetName && guide.Category == guideToGetCategory)
                 {
                     return guide;
                 }
             }
-            return null;
+            throw new Exception($"Guide with the name {guideToGetName} and category {guideToGetCategory} was not found.");
         }
 
         public void Update(Guide guideToUpdate, string updatedGuideName, byte[] updatedLearningMaterial, string updatedCategory)
