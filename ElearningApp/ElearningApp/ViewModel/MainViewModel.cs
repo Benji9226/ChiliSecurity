@@ -31,6 +31,18 @@ namespace ElearningApp.ViewModel
             }
         }
 
+        public MainViewModel(string guideCategory)
+        {
+            foreach (Guide guide in guideRepo.GetAll())
+            {
+                GuideViewModel guideVM = new(guide);
+                if (guideVM.Category == guideCategory)
+                {
+                    GuidesVM.Add(guideVM);
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {

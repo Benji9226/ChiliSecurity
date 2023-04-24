@@ -20,7 +20,7 @@ namespace ElearningApp.View
     /// </summary>
     public partial class ChiliWindow : Window
     {
-        MainViewModel mvm = new MainViewModel();
+        MainViewModel mvm = new MainViewModel("Chili");
         public ChiliWindow()
         {
             InitializeComponent();

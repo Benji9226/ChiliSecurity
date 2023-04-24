@@ -20,6 +20,7 @@ namespace ElearningApp.ViewModel
         private Guide guide;
         public string GuideName { get; set; }
         public byte[] LearningMaterial { get; set; }
+        public string Category { get; set; }
 
         public GuideViewModel()
         {
@@ -30,6 +31,7 @@ namespace ElearningApp.ViewModel
             this.guide = guide;
             GuideName = guide.GuideName;
             LearningMaterial = guide.LearningMaterial;
+            Category = guide.Category;
         }
 
         public void LoadGuide(string guideToLoad)
@@ -39,15 +41,15 @@ namespace ElearningApp.ViewModel
             ShowGuide(guide);
         }
 
-        public void UploadGuide(string guideName, string filePath)
+        public void UploadGuide(string guideName, string filePath, string category)
         {
-            if (guideName != "" && filePath != "")
+            if (guideName != "" && filePath != "" && category != "")
             {
                 foreach (Guide guide in guideRepo.GetAll())
                 {
-                    if (guideName == guide.GuideName)
+                    if (guideName == guide.GuideName && category == guide.Category)
                     {
-                        MessageBox.Show("Navnet eksistere allerede");
+                        MessageBox.Show("Navnet eksistere allerede.");
                     }
                     else 
                     {
@@ -55,19 +57,19 @@ namespace ElearningApp.ViewModel
                         {
                             byte[] byteArray = new byte[stream.Length];
                             stream.Read(byteArray, 0, byteArray.Length);
-
-                            Guide guideToAdd = new Guide(guideName, byteArray);
+                            Guide guideToAdd = new Guide(guideName, byteArray, category);
                             guideRepo.Add(guideToAdd);
                         }
                         MessageBox.Show("Guiden er nu uploaded.");
                     }
-                        
                 }
             }
             else if (guideName == "")
                 MessageBox.Show("FEJL: Guide ikke navngivet");
-            else
+            else if (filePath == "")
                 MessageBox.Show("FEJL: Ingen fil valgt");
+            else
+                MessageBox.Show("FEJL: Ingen kategori valgt");
         }
 
         public Guide GetGuide(string guideToGet)

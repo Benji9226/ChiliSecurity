@@ -20,7 +20,7 @@ namespace ElearningApp.View
     /// </summary>
     public partial class FlatPayWindow : Window
     {
-        MainViewModel mvm = new MainViewModel();
+        MainViewModel mvm = new MainViewModel("FlatPay");
         public FlatPayWindow()
         {
             InitializeComponent();

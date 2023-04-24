@@ -20,7 +20,7 @@ namespace ElearningApp.View
     /// </summary>
     public partial class EnergiFynWindow : Window
     {
-        MainViewModel mvm = new MainViewModel();
+        MainViewModel mvm = new MainViewModel("EnergiFyn");
         public EnergiFynWindow()
         {
             InitializeComponent();

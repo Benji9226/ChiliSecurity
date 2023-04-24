@@ -20,7 +20,7 @@ namespace ElearningApp.View
     /// </summary>
     public partial class EWIIWindow : Window
     {
-        MainViewModel mvm = new MainViewModel();
+        MainViewModel mvm = new MainViewModel("EWII");
         public EWIIWindow()
         {
             InitializeComponent();

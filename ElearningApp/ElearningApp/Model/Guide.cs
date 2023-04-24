@@ -11,11 +11,13 @@ namespace ElearningApp.Model
     {
         public string GuideName { get; set; }
         public byte[] LearningMaterial { get; set; }
+        public string Category { get; set; }
 
-        public Guide(string guideName, byte[] learningMaterial)
+        public Guide(string guideName, byte[] learningMaterial, string category)
         {
             GuideName = guideName;
             LearningMaterial = learningMaterial;
+            Category = category;
         }
     }
 }

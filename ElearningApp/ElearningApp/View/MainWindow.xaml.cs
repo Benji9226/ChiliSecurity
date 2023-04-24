@@ -43,7 +43,7 @@ namespace ElearningApp
 
         private void FileUploadButton_Click(object sender, RoutedEventArgs e)
         {
-            guideVM.UploadGuide(GuideName.Text, FilePath.Text);
+            guideVM.UploadGuide(GuideName.Text, FilePath.Text, GuideCategoryComboBox.Text);
         }
 
         private void ChiliButton_Click(object sender, RoutedEventArgs e)
@@ -68,6 +68,10 @@ namespace ElearningApp
         {
             FlatPayWindow FlatPayWindow = new FlatPayWindow();
             FlatPayWindow.Show();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
         }
     }
 }

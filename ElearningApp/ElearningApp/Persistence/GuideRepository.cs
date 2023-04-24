@@ -25,12 +25,13 @@ namespace ElearningApp.Persistence
         public void Add(Guide guideToAdd)
         {
             guides.Add(guideToAdd);
-            string sqlQuery = "INSERT INTO Guide(GuideName, LearningMaterial) VALUES(@guideName, @learningMaterial)";
+            string sqlQuery = "INSERT INTO Guide(GuideName, LearningMaterial, Category) VALUES(@guideName, @learningMaterial, @category)";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand(sqlQuery, conn);
                 cmd.Parameters.Add("@guideName", SqlDbType.NVarChar).Value = guideToAdd.GuideName;
                 cmd.Parameters.Add("@learningMaterial", SqlDbType.VarBinary).Value = guideToAdd.LearningMaterial;
+                cmd.Parameters.Add("@category", SqlDbType.NVarChar).Value = guideToAdd.Category;
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
@@ -49,7 +50,7 @@ namespace ElearningApp.Persistence
 
                     while (reader.Read())
                     {
-                        Guide guide = new Guide(reader["GuideName"].ToString(), (byte[])reader["LearningMaterial"]);
+                        Guide guide = new Guide(reader["GuideName"].ToString(), (byte[])reader["LearningMaterial"], reader["Category"].ToString());
                         guides.Add(guide);  
                     }
                 }
@@ -69,15 +70,21 @@ namespace ElearningApp.Persistence
             return null;
         }
 
-        public void Update(Guide guideToUpdate, string updatedGuideName, byte[] updatedLearningMaterial)
+        public void Update(Guide guideToUpdate, string updatedGuideName, byte[] updatedLearningMaterial, string updatedCategory)
         {
             foreach (Guide guide in guides)
             {
-                if (guide.GuideName == guideToUpdate.GuideName && guide.LearningMaterial == guideToUpdate.LearningMaterial)
+                // IMPLEMENT THIS IN DB AND CODE:
+                // TWO GUIDES CAN HAVE SAME NAME, TWO GUIDES CAN HAVE SAME CATEGORY
+                // BUT THERE CAN ONLY BE ONE WITH THE COMBO OF NAME AND CATEGORY
+                // (ex. "Chili Installation", "Chili")
+                // (ex. "EnergiFyn HOWTO", "EnergiFyn")
+                if (guide.GuideName == guideToUpdate.GuideName && guide.Category == guideToUpdate.Category)
                 {
                     // TODO: Implement for DB
                     guide.GuideName = updatedGuideName;
                     guide.LearningMaterial = updatedLearningMaterial;
+                    guide.Category = updatedCategory;
                     break;
                 }
             }
@@ -87,7 +94,12 @@ namespace ElearningApp.Persistence
         {
             foreach (Guide guide in guides)
             {
-                if (guide.GuideName == guideToDelete.GuideName && guide.LearningMaterial == guideToDelete.LearningMaterial)
+                // IMPLEMENT THIS IN DB AND CODE:
+                // TWO GUIDES CAN HAVE SAME NAME, TWO GUIDES CAN HAVE SAME CATEGORY
+                // BUT THERE CAN ONLY BE ONE WITH THE COMBO OF NAME AND CATEGORY
+                // (ex. "Chili Installation", "Chili")
+                // (ex. "EnergiFyn HOWTO", "EnergiFyn")
+                if (guide.GuideName == guideToDelete.GuideName && guide.Category == guideToDelete.Category)
                 {
                     // TODO: Implement for DB
                     guides.Remove(guide);
