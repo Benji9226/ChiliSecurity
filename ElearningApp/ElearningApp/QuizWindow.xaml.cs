@@ -20,15 +20,19 @@ namespace ElearningApp
     /// </summary>
     public partial class QuizWindow : Window
     {
-        QuizViewModel qzw = new QuizViewModel();
+        QuizViewModel qzw = new QuizViewModel("Antivirus Chili Security");
         int correctAnswer;
         int questionNumber = 1;
         int score;
         int totalQuestions;
 
+
+
         public QuizWindow()
         {
             InitializeComponent();
+
+            //DataContext = qzw;
 
             LoadQuiz(questionNumber);
 
@@ -36,20 +40,20 @@ namespace ElearningApp
         }
 
 
-        public void checkAnswerEvent(object sender, EventArgs e) 
+        public void checkAnswerEvent(object sender, EventArgs e)
         {
             Button senderObject = sender as Button;
 
 
-            if (Convert.ToInt32(senderObject.Tag)  == correctAnswer) 
+            if (Convert.ToInt32(senderObject.Tag) == correctAnswer)
             {
                 questionNumber++;
                 LoadQuiz(questionNumber);
-            
+
             }
         }
 
-       
+
         public void LoadQuiz(int qnum)
         {
 

@@ -31,6 +31,7 @@ namespace ElearningApp
         GuideViewModel guideViewModel = new GuideViewModel();
         GuideRepository guideRepo = new GuideRepository();
         QuizWindow qw = new QuizWindow();
+        QuizViewModel qvm = new QuizViewModel("Antivirus Chili Security");
 
         public MainWindow()
         {
@@ -57,7 +58,9 @@ namespace ElearningApp
 
         private void Quiz_Click(object sender, RoutedEventArgs e)
         {
+            qvm.DisplayQuiz();
             qw.ShowDialog();
+            
         }
     }
 }

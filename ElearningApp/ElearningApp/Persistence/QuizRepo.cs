@@ -22,7 +22,7 @@ namespace ElearningApp.Persistence
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("Select * From Quiz");
+                SqlCommand cmd = new SqlCommand("Select * From Quiz", conn);
 
                 using(SqlDataReader reader = cmd.ExecuteReader())
                 {
