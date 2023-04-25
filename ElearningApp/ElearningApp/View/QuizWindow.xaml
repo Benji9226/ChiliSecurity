@@ -1,0 +1,21 @@
+﻿<Window x:Class="ElearningApp.View.QuizWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElearningApp.View"
+        mc:Ignorable="d"
+        Title="QuizWindow" Height="450" Width="800">
+    <Grid>
+        <Grid Margin="10,10,565,10">
+            <ListBox x:Name="chiliQuiz" ItemsSource="{Binding QuizzesVM}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Title}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <Label Content="{Binding QuizzesVM.Title}" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="36"/>
+    </Grid>
+</Window>

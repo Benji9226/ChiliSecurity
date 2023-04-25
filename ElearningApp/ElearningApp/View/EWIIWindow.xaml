@@ -17,8 +17,8 @@
             </ListBox>
         </Grid>
         <Grid Margin="303,10,10,10">
-            <Button x:Name="openSelectedPdfButton" Click="OpenSelectedPdfButton_Click" Content="OPEN" HorizontalAlignment="Center" Margin="0,300,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="100" Height="50"/>
-
+            <Button x:Name="openSelectedPdfButton" Click="OpenSelectedPdfButton_Click" Content="OPEN" HorizontalAlignment="Left" Margin="308,309,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="100" Height="50"/>
+            <Button x:Name="openSelectedPdfQuizButton" Click="openSelectedPdfQuizButton_Click" Content="Quiz" HorizontalAlignment="Left" Margin="78,309,0,0" VerticalAlignment="Top" Width="100" Height="50" FontWeight="Bold"/>
         </Grid>
     </Grid>
 </Window>

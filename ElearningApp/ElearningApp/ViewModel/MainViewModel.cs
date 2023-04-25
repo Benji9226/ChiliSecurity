@@ -13,7 +13,9 @@ namespace ElearningApp.ViewModel
     public class MainViewModel : INotifyPropertyChanged
     {
         private GuideRepository guideRepo = new GuideRepository();
+        private QuizRepository quizRepo = new QuizRepository();
         public ObservableCollection<GuideViewModel> GuidesVM { get; set; } = new();
+        public ObservableCollection<QuizViewModel> QuizzesVM { get; set; } = new();
 
         private GuideViewModel guideViewModel;
         public GuideViewModel SelectedGuideVM
@@ -40,6 +42,12 @@ namespace ElearningApp.ViewModel
                 {
                     GuidesVM.Add(guideVM);
                 }
+            }
+
+            foreach (Quiz quiz in quizRepo.GetQuizzesByCategory(guideCategory))
+            {
+                QuizViewModel quizVM = new(quiz);
+                QuizzesVM.Add(quizVM);
             }
         }
 

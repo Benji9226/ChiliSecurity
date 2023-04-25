@@ -33,5 +33,11 @@ namespace ElearningApp.View
             string guideToLoadCategory = mvm.SelectedGuideVM.Category;
             mvm.SelectedGuideVM.LoadGuide(guideToLoadName, guideToLoadCategory);
         }
+
+        private void openSelectedPdfQuizButton_Click(object sender, RoutedEventArgs e)
+        {
+            QuizWindow quizWindow = new QuizWindow("EWII");
+            quizWindow.Show();
+        }
     }
 }
