@@ -33,7 +33,8 @@ namespace ElearningApp.Persistence
 
                             Description = reader["Description"].ToString(),
                             Result = int.Parse(reader["Result"].ToString()),
-                            GuideName = reader["GuideName"].ToString()
+                            GuideName = reader["GuideName"].ToString(),
+                            Answers = reader["Answers"].ToString().Split(";")
                         };
                         quizList.Add(quiz);
                     }
@@ -43,9 +44,6 @@ namespace ElearningApp.Persistence
             return quizList;
 
         }
-
     }
-
-
 }
 
