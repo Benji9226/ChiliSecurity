@@ -87,8 +87,16 @@ namespace ElearningApp.Persistence
                     guide.Category = updatedCategory;
 
 
-
-
+                    string sqlQuery = "Update Guide Set LearningMaterial = @LearningMaterial Where GuideName = @Guidename and Category = @Category";
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+                        cmd.Parameters.Add("@GuideName", SqlDbType.NVarChar).Value = guideToUpdate.GuideName;
+                        cmd.Parameters.Add("@LearningMaterial", SqlDbType.NVarChar).Value = guideToUpdate.LearningMaterial;
+                        cmd.Parameters.Add("@Category", SqlDbType.NVarChar).Value = guideToUpdate.Category;
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                    }
                     break;
                 }
             }
