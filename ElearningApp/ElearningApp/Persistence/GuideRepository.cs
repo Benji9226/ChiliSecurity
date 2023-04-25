@@ -85,6 +85,10 @@ namespace ElearningApp.Persistence
                     guide.GuideName = updatedGuideName;
                     guide.LearningMaterial = updatedLearningMaterial;
                     guide.Category = updatedCategory;
+
+
+
+
                     break;
                 }
             }
@@ -103,6 +107,18 @@ namespace ElearningApp.Persistence
                 {
                     // TODO: Implement for DB
                     guides.Remove(guide);
+
+                    //SHOULD WORK LIKE THIS:
+                    string sqlQuery = "Delete from Guide Where GuideName = @GuideName And Category = @Category";
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+                        cmd.Parameters.Add("@GuideName", SqlDbType.NVarChar).Value = guideToDelete.GuideName;
+                        cmd.Parameters.Add("@Category", SqlDbType.NVarChar).Value = guideToDelete.Category;
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+
                     break;
                 }
             }
