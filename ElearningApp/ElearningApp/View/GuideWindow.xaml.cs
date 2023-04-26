@@ -16,15 +16,17 @@ using System.Windows.Shapes;
 namespace ElearningApp.View
 {
     /// <summary>
-    /// Interaction logic for EnergiFynWindow.xaml
+    /// Interaction logic for GuideWindow.xaml
     /// </summary>
-    public partial class EnergiFynWindow : Window
+    public partial class GuideWindow : Window
     {
-        MainViewModel mvm = new MainViewModel("EnergiFyn");
-        public EnergiFynWindow()
+        MainViewModel mvm;
+        public GuideWindow(string category)
         {
             InitializeComponent();
+            mvm = new MainViewModel(category);
             DataContext = mvm;
+            guideCategory.Content = category;
         }
 
         private void OpenSelectedPdfButton_Click(object sender, RoutedEventArgs e)
@@ -32,6 +34,12 @@ namespace ElearningApp.View
             string guideToLoadName = mvm.SelectedGuideVM.GuideName;
             string guideToLoadCategory = mvm.SelectedGuideVM.Category;
             mvm.SelectedGuideVM.LoadGuide(guideToLoadName, guideToLoadCategory);
+        }
+
+        private void OpenQuizButton_Click(object sender, RoutedEventArgs e)
+        {
+            QuizWindow quizWindow = new QuizWindow(guideCategory.Content.ToString());
+            quizWindow.Show();
         }
     }
 }

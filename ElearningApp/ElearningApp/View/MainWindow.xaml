@@ -19,7 +19,7 @@
                 <Button x:Name="ChiliButton" Content="Chili" HorizontalAlignment="Left" Margin="254,128,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="ChiliButton_Click"/>
                 <Button x:Name="EWIIButton" Content="EWII" HorizontalAlignment="Left" Margin="531,128,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="EWIIButton_Click" />
                 <Button x:Name="EnergiFynButton" Content="EnergiFyn" HorizontalAlignment="Left" Margin="254,298,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="EnergiFynButton_Click"/>
-                <Button x:Name="FlatPayButton" Content="FlatPay" HorizontalAlignment="Left" Margin="531,298,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="FlatPayButton_Click"/>
+                <Button x:Name="FlatPayButton" Content="FlatPay" HorizontalAlignment="Left" Margin="531,298,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="FlatPlayButton_Click"/>
                 <Rectangle HorizontalAlignment="Left" Height="444" Margin="-14,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="154" Fill="Black"/>
                 <Image x:Name="ChiliLogo" HorizontalAlignment="Left" Height="100" Margin="21,10,0,0" VerticalAlignment="Top" Width="100" Source="/Images/ChiliSecurityLogo.png"/>
             </Grid>

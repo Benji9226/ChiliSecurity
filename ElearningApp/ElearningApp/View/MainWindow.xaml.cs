@@ -46,32 +46,32 @@ namespace ElearningApp
             guideVM.UploadGuide(GuideName.Text, FilePath.Text, GuideCategoryComboBox.Text);
         }
 
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        }
+
         private void ChiliButton_Click(object sender, RoutedEventArgs e)
         {
-            ChiliWindow chiliWindow = new ChiliWindow();
-            chiliWindow.Show();
+            GuideWindow guideWindow = new GuideWindow(ChiliButton.Content.ToString());
+            guideWindow.Show();
         }
 
         private void EWIIButton_Click(object sender, RoutedEventArgs e)
         {
-            EWIIWindow ewiiWindow = new EWIIWindow();
-            ewiiWindow.Show();
+            GuideWindow guideWindow = new GuideWindow(EWIIButton.Content.ToString());
+            guideWindow.Show();
         }
 
         private void EnergiFynButton_Click(object sender, RoutedEventArgs e)
         {
-            EnergiFynWindow energiFynWindow = new EnergiFynWindow();
-            energiFynWindow.Show();
+            GuideWindow guideWindow = new GuideWindow(EnergiFynButton.Content.ToString());
+            guideWindow.Show();
         }
 
-        private void FlatPayButton_Click(object sender, RoutedEventArgs e)
+        private void FlatPlayButton_Click(object sender, RoutedEventArgs e)
         {
-            FlatPayWindow FlatPayWindow = new FlatPayWindow();
-            FlatPayWindow.Show();
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+            GuideWindow guideWindow = new GuideWindow(FlatPayButton.Content.ToString());
+            guideWindow.Show();
         }
     }
 }

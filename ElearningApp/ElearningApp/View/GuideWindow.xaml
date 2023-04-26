@@ -1,14 +1,14 @@
-﻿<Window x:Class="ElearningApp.View.ChiliWindow"
+﻿<Window x:Class="ElearningApp.View.GuideWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElearningApp.View"
         mc:Ignorable="d"
-        Title="ChiliWindow" Height="450" Width="800">
+        Title="GuideWindow" Height="450" Width="800">
     <Grid>
         <Grid Margin="10,10,575,10">
-            <ListBox x:Name="chiliGuidesListBox" ItemsSource="{Binding GuidesVM}" SelectedItem="{Binding SelectedGuideVM}">
+            <ListBox x:Name="guidesListBox" ItemsSource="{Binding GuidesVM}" SelectedItem="{Binding SelectedGuideVM}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding GuideName}"/>
@@ -20,5 +20,6 @@
             <Button x:Name="openSelectedPdfButton" Click="OpenSelectedPdfButton_Click" Content="OPEN" HorizontalAlignment="Left" Margin="298,309,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="100" Height="50"/>
             <Button x:Name="openQuizButton" Click="OpenQuizButton_Click" Content="Quiz" HorizontalAlignment="Left" Margin="78,309,0,0" VerticalAlignment="Top" Width="100" Height="50" FontWeight="Bold"/>
         </Grid>
+        <Label x:Name="guideCategory" Content="Category" HorizontalAlignment="Left" Margin="516,62,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
