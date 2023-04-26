@@ -8,13 +8,13 @@
         Title="QuizWindow" Height="450" Width="800">
     <Grid>
         <Grid Margin="10,10,10,10">
-            <Label x:Name="questionNumber" Content="Label" Margin="659,0,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
             <Label x:Name="quizLabel" Content="Label" HorizontalAlignment="Left" Margin="97,25,0,0" VerticalAlignment="Top" FontSize="24" HorizontalContentAlignment="Center" Width="600"/>
+            <Label x:Name="correctAnswerCounter" Content="Label" Margin="97,0,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
+            <Label x:Name="questionNumber" Content="Label" Margin="659,0,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
             <Button x:Name="answerOne" Content="Button" HorizontalAlignment="Left" Margin="97,100,0,0" VerticalAlignment="Top" Width="600" Height="50" Click="answer_Click"/>
             <Button x:Name="answerTwo" Content="Button" HorizontalAlignment="Left" Margin="97,177,0,0" VerticalAlignment="Top" Width="600" Height="50" Click="answer_Click"/>
             <Button x:Name="answerThree" Content="Button" HorizontalAlignment="Left" Margin="97,251,0,0" VerticalAlignment="Top" Width="600" Height="50" Click="answer_Click"/>
             <Button x:Name="answerFour" Content="Button" HorizontalAlignment="Left" Margin="97,324,0,0" VerticalAlignment="Top" Width="600" Height="50" Click="answer_Click"/>
-            <Label x:Name="correctAnswerCounter" Content="Label" Margin="97,0,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
         </Grid>
     </Grid>
 </Window>
