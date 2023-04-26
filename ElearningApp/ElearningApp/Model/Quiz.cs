@@ -13,12 +13,6 @@ namespace ElearningApp.Model
         public List<Question> Questions { get; set; }
         public string Category { get; set; }
 
-        public Quiz(int id, string title, string category)
-        {
-            Id = id;
-            Title = title;
-            Questions = new List<Question>();
-            Category = category;
-        }
+        
     }
 }

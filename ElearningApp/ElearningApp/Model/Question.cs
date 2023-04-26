@@ -12,11 +12,6 @@ namespace ElearningApp.Model
         public string[] PossibleAnswers { get; set; }
         public string CorrectAnswer { get; set; }
 
-        public Question(string text, string[] possibleAnswers, string correctAnswerIndex)
-        {
-            Text = text;
-            PossibleAnswers = possibleAnswers;
-            CorrectAnswer = correctAnswerIndex;
-        }
+        
     }
 }

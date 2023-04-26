@@ -30,7 +30,9 @@ namespace ElearningApp.Persistence
 
         public Quiz GetQuizzesByName(string quizName)
         {
-            Quiz quiz = new Quiz(0, "", "");
+            Question question;
+            Quiz quiz;
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -39,18 +41,25 @@ namespace ElearningApp.Persistence
                 {
                     while (reader.Read())
                     {
-                        string correctAnswer = reader["CorrectAnswer"].ToString();
-                        string[] possibleAnswerArray = reader["PossibleAnswers"].ToString().Split(';');
-                        string questionText = reader["Question"].ToString();
-                        Question question = new Question(questionText, possibleAnswerArray, correctAnswer);
-                        quiz.Id = (int)reader["QuizId"];
-                        quiz.Title = quizName;
-                        quiz.Questions.Add(question);
-                        quiz.Category = reader["Category"].ToString();
+                        question = new Question()
+                        {
+                            Text = reader["Question"].ToString(),
+                            PossibleAnswers = reader["PossibleAnswers"].ToString().Split(';'),
+                            CorrectAnswer = reader["CorrectAnswer"].ToString()
+                        };
+
+                        quiz = new Quiz()
+                        {
+                            Id = (int)reader["QuizId"],
+                            Title = quizName,
+                            Questions = new List<Question> { question },
+                            Category = reader["Category"].ToString(),
+                        };
+
                     }
                 }
+                return quiz;
             }
-            return quiz;
         }
 
         public List<Quiz> GetQuizzesByCategory(string category)
