@@ -15,77 +15,78 @@ namespace ElearningApp.Persistence
 
         public QuizRepository()
         {
-            quizzes = new List<Quiz>();
             quizzes = GetAll();
         }
 
         public List<Quiz> GetAll()
         {
-            quizzes.AddRange(GetQuizzesByCategory("Chili"));
-            quizzes.AddRange(GetQuizzesByCategory("EWII"));
-            quizzes.AddRange(GetQuizzesByCategory("EnergiFyn"));
-            quizzes.AddRange(GetQuizzesByCategory("FlatPay"));
-            return quizzes;
-        }
-
-        public Quiz GetQuizzesByName(string quizName)
-        {
-            Quiz quiz = new Quiz(0, "", "");
+            Quiz quiz = new Quiz(0, "");
+            List<Quiz> tempQuizList = new List<Quiz>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand($"SELECT * FROM QuizTest WHERE QuizName ='{quizName}'", conn);
+                SqlCommand cmd = new SqlCommand($"SELECT * FROM QuizTest2", conn);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        string correctAnswer = reader["CorrectAnswer"].ToString();
-                        string[] possibleAnswerArray = reader["PossibleAnswers"].ToString().Split(';');
-                        string questionText = reader["Question"].ToString();
-                        Question question = new Question(questionText, possibleAnswerArray, correctAnswer);
-                        quiz.Id = (int)reader["QuizId"];
-                        quiz.Title = quizName;
-                        quiz.Questions.Add(question);
-                        quiz.Category = reader["Category"].ToString();
+                        quiz.Id = (int)reader["quiz_id"];
+                        quiz.Category = reader["quiz_category"].ToString();
+                        quiz.Questions = GetQuestionsByQuizId(quiz.Id);
+                        tempQuizList.Add(quiz);
+                        quiz = new Quiz(0, "");
+                    }
+                }
+            }
+            return tempQuizList;
+        }
+
+        public Quiz GetByCategory(string category)
+        {
+            Quiz quiz = new Quiz(0, "");
+            List<Quiz> tempQuizList = new List<Quiz>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand($"SELECT * FROM QuizTest2 WHERE quiz_category='{category}'", conn);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        quiz.Id = (int)reader["quiz_id"];
+                        quiz.Category = reader["quiz_category"].ToString();
+                        quiz.Questions = GetQuestionsByQuizId(quiz.Id);
+                        return quiz;
                     }
                 }
             }
             return quiz;
         }
 
-        public List<Quiz> GetQuizzesByCategory(string category)
+        private List<Question> GetQuestionsByQuizId(int quiz_id)
         {
-            Quiz quiz = new Quiz(0, "", "");
-            List<Quiz> tempQuizList = new List<Quiz>();
+            Question question = new Question("", null, "", "");
+            List<Question> tempQuestionList = new List<Question>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                for (int quizId = 1; quizId < 5; quizId++)
                 {
-                    SqlCommand cmd = new SqlCommand($"SELECT * FROM QuizTest WHERE Category ='{category}' AND QuizId = {quizId}", conn);
+                    SqlCommand cmd = new SqlCommand($"SELECT * FROM Question WHERE quiz_id ='{quiz_id}'", conn);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            quiz.Id = (int)reader["QuizId"];
-                            quiz.Title = reader["QuizName"].ToString();
-                            quiz.Category = reader["Category"].ToString();
-                            for (int j = 0; j < 4; j++)
-                            {
-                                string correctAnswer = reader["CorrectAnswer"].ToString();
-                                string[] possibleAnswerArray = reader["PossibleAnswers"].ToString().Split(';');
-                                string questionText = reader["Question"].ToString();
-                                Question question = new Question(questionText, possibleAnswerArray, correctAnswer);
-                                quiz.Questions.Add(question);
-                            }
-                            tempQuizList.Add(quiz);
-                            quiz = new Quiz(0, "", "");
+                            string questionText = reader["question_text"].ToString();
+                            string[] possibleAnswerArray = reader["possible_answers"].ToString().Split(';');
+                            string correctAnswer = reader["correct_answer"].ToString();
+                            string category = reader["category"].ToString();
+                            question = new Question(questionText, possibleAnswerArray, correctAnswer, category);
+                            tempQuestionList.Add(question);
                         }
-                        return tempQuizList;
                     }
                 }
-                return null;
             }
+            return tempQuestionList;
         }
     }
 }

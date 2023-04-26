@@ -7,23 +7,14 @@
         mc:Ignorable="d"
         Title="QuizWindow" Height="450" Width="800">
     <Grid>
-        <Grid Margin="10,10,565,10">
-            <ListBox x:Name="chiliQuiz" ItemsSource="{Binding QuizzesVM}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Title}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+        <Grid Margin="10,10,10,10">
+            <Label x:Name="questionNumber" Content="Label" Margin="659,0,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
+            <Label x:Name="quizLabel" Content="Label" HorizontalAlignment="Left" Margin="97,25,0,0" VerticalAlignment="Top" FontSize="24" HorizontalContentAlignment="Center" Width="600"/>
+            <Button x:Name="answerOne" Content="Button" HorizontalAlignment="Left" Margin="97,100,0,0" VerticalAlignment="Top" Width="600" Height="50" Click="answer_Click"/>
+            <Button x:Name="answerTwo" Content="Button" HorizontalAlignment="Left" Margin="97,177,0,0" VerticalAlignment="Top" Width="600" Height="50" Click="answer_Click"/>
+            <Button x:Name="answerThree" Content="Button" HorizontalAlignment="Left" Margin="97,251,0,0" VerticalAlignment="Top" Width="600" Height="50" Click="answer_Click"/>
+            <Button x:Name="answerFour" Content="Button" HorizontalAlignment="Left" Margin="97,324,0,0" VerticalAlignment="Top" Width="600" Height="50" Click="answer_Click"/>
+            <Label x:Name="correctAnswerCounter" Content="Label" Margin="97,0,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
         </Grid>
-        <Grid Margin="250,10,10,10">
-            <Label x:Name="quizLabel" Content="Label" HorizontalAlignment="Left" Margin="250,51,0,0" VerticalAlignment="Top"/>
-            <Button x:Name="answerOne" Content="Button" HorizontalAlignment="Left" Margin="117,133,0,0" VerticalAlignment="Top"/>
-            <Button x:Name="answerTwo" Content="Button" HorizontalAlignment="Left" Margin="377,133,0,0" VerticalAlignment="Top"/>
-            <Button x:Name="answerThree" Content="Button" HorizontalAlignment="Left" Margin="377,265,0,0" VerticalAlignment="Top"/>
-            <Button x:Name="answerFour" Content="Button" HorizontalAlignment="Left" Margin="117,265,0,0" VerticalAlignment="Top"/>
-
-        </Grid>
-        <Label Content="{Binding QuizzesVM.Title}" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="36"/>
     </Grid>
 </Window>

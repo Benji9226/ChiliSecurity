@@ -11,12 +11,14 @@ namespace ElearningApp.Model
         public string Text { get; set; }
         public string[] PossibleAnswers { get; set; }
         public string CorrectAnswer { get; set; }
+        public string Category { get; set; }
 
-        public Question(string text, string[] possibleAnswers, string correctAnswerIndex)
+        public Question(string text, string[] possibleAnswers, string correctAnswerIndex, string category)
         {
             Text = text;
             PossibleAnswers = possibleAnswers;
             CorrectAnswer = correctAnswerIndex;
+            Category = category;
         }
     }
 }

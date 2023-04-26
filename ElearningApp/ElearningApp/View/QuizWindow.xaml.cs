@@ -21,30 +21,50 @@ namespace ElearningApp.View
     /// </summary>
     public partial class QuizWindow : Window
     {
-        MainViewModel mvm = new MainViewModel();
         QuizViewModel qvm = new QuizViewModel();
+        Quiz quiz;
+        private int currentQuestion = 0;
+        private int correctAnswers = 0;
+
         public QuizWindow(string category)
         {
-            mvm = new MainViewModel(category);
             InitializeComponent();
-            DataContext = mvm;
-            LoadQuiz(category);
+            quiz = qvm.GetQuiz(category);
+            StartQuiz();
         }
 
-        public void LoadQuiz(string category)
+        public void StartQuiz()
         {
-            List<Quiz> quizList = qvm.GetQuiz(category);
-            int i = 0;
+            LoadQuestion(currentQuestion);
+        }
 
-            foreach(Quiz quiz in quizList)
+        public void LoadQuestion(int currentQuestion)
+        {
+            if (currentQuestion < quiz.Questions.Count)
             {
-                quizLabel.Content = quiz.Title;
-                answerOne.Content = quiz.Questions.ElementAt(i).PossibleAnswers[0];
-                answerTwo.Content = quiz.Questions.ElementAt(i).PossibleAnswers[1];
-                answerThree.Content = quiz.Questions.ElementAt(i).PossibleAnswers[2];
-                answerFour.Content = quiz.Questions.ElementAt(i).PossibleAnswers[3];
-                i++;
+                correctAnswerCounter.Content = correctAnswers;
+                questionNumber.Content = $"{currentQuestion + 1} / {quiz.Questions.Count}";
+                quizLabel.Content = quiz.Questions.ElementAt(currentQuestion).Text;
+                answerOne.Content = quiz.Questions.ElementAt(currentQuestion).PossibleAnswers[0];
+                answerTwo.Content = quiz.Questions.ElementAt(currentQuestion).PossibleAnswers[1];
+                answerThree.Content = quiz.Questions.ElementAt(currentQuestion).PossibleAnswers[2];
+                answerFour.Content = quiz.Questions.ElementAt(currentQuestion).PossibleAnswers[3];
             }
+            else
+                MessageBox.Show($"You have completed the Quiz with {correctAnswers} / {quiz.Questions.Count} correct.");
+        }
+
+        private void answer_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            string userAnswer = clickedButton.Content.ToString();
+            string correctAnswer = quiz.Questions.ElementAt(currentQuestion).CorrectAnswer;
+            if (userAnswer == correctAnswer)
+            {
+                correctAnswers++;
+            }
+            currentQuestion++;
+            LoadQuestion(currentQuestion);
         }
     }
 }

@@ -14,9 +14,8 @@ namespace ElearningApp.ViewModel
         QuizRepository quizRepo = new QuizRepository();
         private Quiz quiz;
         public int Id { get; set; }
-        public string Title { get; set; }
-        public List<Question> Questions { get; set; }
         public string Category { get; set; }
+        public List<Question> Questions { get; set; }
 
         public QuizViewModel()
         {
@@ -25,14 +24,13 @@ namespace ElearningApp.ViewModel
         {
             this.quiz = quiz;
             Id = quiz.Id;
-            Title = quiz.Title;
-            Questions = quiz.Questions;
             Category = quiz.Category;
+            Questions = quiz.Questions;
         }
 
-        public List<Quiz> GetQuiz(string category)
+        public Quiz GetQuiz(string category)
         {
-            List<Quiz> quiz = quizRepo.GetQuizzesByCategory(category);
+            quiz = quizRepo.GetByCategory(category);
             return quiz;
         }
     }
