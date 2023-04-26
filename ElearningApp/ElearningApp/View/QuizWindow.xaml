@@ -16,6 +16,14 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
+        <Grid Margin="250,10,10,10">
+            <Label x:Name="quizLabel" Content="Label" HorizontalAlignment="Left" Margin="250,51,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="answerOne" Content="Button" HorizontalAlignment="Left" Margin="117,133,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="answerTwo" Content="Button" HorizontalAlignment="Left" Margin="377,133,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="answerThree" Content="Button" HorizontalAlignment="Left" Margin="377,265,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="answerFour" Content="Button" HorizontalAlignment="Left" Margin="117,265,0,0" VerticalAlignment="Top"/>
+
+        </Grid>
         <Label Content="{Binding QuizzesVM.Title}" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="36"/>
     </Grid>
 </Window>

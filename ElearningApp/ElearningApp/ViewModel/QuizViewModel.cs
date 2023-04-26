@@ -29,5 +29,11 @@ namespace ElearningApp.ViewModel
             Questions = quiz.Questions;
             Category = quiz.Category;
         }
+
+        public List<Quiz> GetQuiz(string category)
+        {
+            List<Quiz> quiz = quizRepo.GetQuizzesByCategory(category);
+            return quiz;
+        }
     }
 }

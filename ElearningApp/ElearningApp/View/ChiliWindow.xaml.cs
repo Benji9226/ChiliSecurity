@@ -34,7 +34,7 @@ namespace ElearningApp.View
             mvm.SelectedGuideVM.LoadGuide(guideToLoadName, guideToLoadCategory);
         }
 
-        private void openSelectedPdfQuizButton_Click(object sender, RoutedEventArgs e)
+        private void OpenQuizButton_Click(object sender, RoutedEventArgs e)
         {
             QuizWindow quizWindow = new QuizWindow("Chili");
             quizWindow.Show();

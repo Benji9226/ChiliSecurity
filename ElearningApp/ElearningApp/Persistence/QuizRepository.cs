@@ -60,28 +60,32 @@ namespace ElearningApp.Persistence
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand($"SELECT * FROM QuizTest WHERE Category ='{category}'", conn);
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                for (int quizId = 1; quizId < 5; quizId++)
                 {
-                    while (reader.Read())
+                    SqlCommand cmd = new SqlCommand($"SELECT * FROM QuizTest WHERE Category ='{category}' AND QuizId = {quizId}", conn);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        for(int i = 0; i < 4; i++)
+                        while (reader.Read())
                         {
-                            string correctAnswer = reader["CorrectAnswer"].ToString();
-                            string[] possibleAnswerArray = reader["PossibleAnswers"].ToString().Split(';');
-                            string questionText = reader["Question"].ToString();
-                            Question question = new Question(questionText, possibleAnswerArray, correctAnswer);
-                            quiz.Questions.Add(question);
+                            quiz.Id = (int)reader["QuizId"];
+                            quiz.Title = reader["QuizName"].ToString();
+                            quiz.Category = reader["Category"].ToString();
+                            for (int j = 0; j < 4; j++)
+                            {
+                                string correctAnswer = reader["CorrectAnswer"].ToString();
+                                string[] possibleAnswerArray = reader["PossibleAnswers"].ToString().Split(';');
+                                string questionText = reader["Question"].ToString();
+                                Question question = new Question(questionText, possibleAnswerArray, correctAnswer);
+                                quiz.Questions.Add(question);
+                            }
+                            tempQuizList.Add(quiz);
+                            quiz = new Quiz(0, "", "");
                         }
-                        quiz.Id = (int)reader["QuizId"];
-                        quiz.Title = reader["QuizName"].ToString();
-                        quiz.Category = reader["Category"].ToString();
-                        tempQuizList.Add(quiz);
-                        quiz = new Quiz(0, "", "");
+                        return tempQuizList;
                     }
                 }
+                return null;
             }
-            return tempQuizList;
         }
     }
 }
