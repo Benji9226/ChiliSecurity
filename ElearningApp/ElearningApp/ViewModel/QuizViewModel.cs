@@ -20,6 +20,7 @@ namespace ElearningApp.ViewModel
         public QuizViewModel()
         {
         }
+
         public QuizViewModel(Quiz quiz)
         {
             this.quiz = quiz;

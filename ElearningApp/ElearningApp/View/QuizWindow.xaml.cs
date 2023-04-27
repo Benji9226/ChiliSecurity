@@ -54,7 +54,7 @@ namespace ElearningApp.View
                 MessageBox.Show($"You have completed the Quiz with {correctAnswers} / {quiz.Questions.Count} correct.");
         }
 
-        private void answer_Click(object sender, RoutedEventArgs e)
+        private void Answer_Click(object sender, RoutedEventArgs e)
         {
             Button clickedButton = (Button)sender;
             string userAnswer = clickedButton.Content.ToString();
