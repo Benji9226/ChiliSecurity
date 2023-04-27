@@ -33,12 +33,12 @@ namespace ElearningApp.View
             StartQuiz();
         }
 
-        public void StartQuiz()
+        private void StartQuiz()
         {
             LoadQuestion(currentQuestion);
         }
 
-        public void LoadQuestion(int currentQuestion)
+        private void LoadQuestion(int currentQuestion)
         {
             if (currentQuestion < quiz.Questions.Count)
             {
