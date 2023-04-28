@@ -74,18 +74,11 @@ namespace ElearningApp.Persistence
         {
             foreach (Guide guide in guides)
             {
-                // IMPLEMENT THIS IN DB AND CODE:
-                // TWO GUIDES CAN HAVE SAME NAME, TWO GUIDES CAN HAVE SAME CATEGORY
-                // BUT THERE CAN ONLY BE ONE WITH THE COMBO OF NAME AND CATEGORY
-                // (ex. "Chili Installation", "Chili")
-                // (ex. "EnergiFyn HOWTO", "EnergiFyn")
                 if (guide.GuideName == guideToUpdate.GuideName && guide.Category == guideToUpdate.Category)
                 {
-                    // TODO: Implement for DB
                     guide.GuideName = updatedGuideName;
                     guide.LearningMaterial = updatedLearningMaterial;
                     guide.Category = updatedCategory;
-
 
                     string sqlQuery = "Update Guide Set LearningMaterial = @LearningMaterial Where GuideName = @Guidename and Category = @Category";
                     using (SqlConnection conn = new SqlConnection(connectionString))
@@ -106,17 +99,10 @@ namespace ElearningApp.Persistence
         {
             foreach (Guide guide in guides)
             {
-                // IMPLEMENT THIS IN DB AND CODE:
-                // TWO GUIDES CAN HAVE SAME NAME, TWO GUIDES CAN HAVE SAME CATEGORY
-                // BUT THERE CAN ONLY BE ONE WITH THE COMBO OF NAME AND CATEGORY
-                // (ex. "Chili Installation", "Chili")
-                // (ex. "EnergiFyn HOWTO", "EnergiFyn")
                 if (guide.GuideName == guideToDelete.GuideName && guide.Category == guideToDelete.Category)
                 {
-                    // TODO: Implement for DB
                     guides.Remove(guide);
 
-                    //SHOULD WORK LIKE THIS:
                     string sqlQuery = "Delete from Guide Where GuideName = @GuideName And Category = @Category";
                     using (SqlConnection conn = new SqlConnection(connectionString))
                     {
