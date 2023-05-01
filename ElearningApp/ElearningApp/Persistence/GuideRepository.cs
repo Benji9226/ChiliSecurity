@@ -112,7 +112,6 @@ namespace ElearningApp.Persistence
                         conn.Open();
                         cmd.ExecuteNonQuery();
                     }
-
                     break;
                 }
             }

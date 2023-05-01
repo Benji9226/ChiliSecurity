@@ -45,8 +45,11 @@ namespace ElearningApp.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
-            PropertyChangedEventHandler propertyChanged = PropertyChanged;
-            if (propertyChanged != null) { propertyChanged(this, new PropertyChangedEventArgs(propertyName)); }
+            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if (propertyChanged != null)
+            {
+                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

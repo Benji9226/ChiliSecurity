@@ -17,7 +17,7 @@ namespace ElearningApp.ViewModel
     public class GuideViewModel
     {
         GuideRepository guideRepo = new GuideRepository();
-        private Guide guide;
+        public Guide guide;
         public string GuideName { get; set; }
         public byte[] LearningMaterial { get; set; }
         public string Category { get; set; }
@@ -73,12 +73,20 @@ namespace ElearningApp.ViewModel
                 MessageBox.Show("FEJL: Ingen kategori valgt");
         }
 
-        //THIS METHOD IS NOT NEEDED (Maybe Delete?).
-        //
-        //public Guide GetGuide(string guideToGetName, string guideToGetCategory)
-        //{
-        //    return guideRepo.GetByNameAndCategory(guideToGetName, guideToGetCategory);
-        //}
+        public void UpdateGuide(Guide guide, string newGuideName, string filePath, string newGuideCategory)
+        {
+            using (Stream stream = File.OpenRead(filePath))
+            {
+                byte[] byteArray = new byte[stream.Length];
+                stream.Read(byteArray, 0, byteArray.Length);
+                guideRepo.Update(guide, newGuideName, byteArray, newGuideCategory);
+            }
+        }
+
+        public void DeleteGuide(Guide guide)
+        {
+            guideRepo.Delete(guide);
+        }
 
         private void CreateGuideFile(string guideName, string guideCategory)
         {

@@ -1,4 +1,5 @@
 ﻿using ElearningApp.View;
+using ElearningApp.View.AdminWindows;
 using ElearningApp.ViewModel;
 using Microsoft.Win32;
 using System;
@@ -27,27 +28,10 @@ namespace ElearningApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        GuideViewModel guideVM = new GuideViewModel();
 
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void FileExplorerOpenButton_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog FileExplorer = new OpenFileDialog();
-            FileExplorer.ShowDialog();
-            FilePath.Text = FileExplorer.FileName;
-        }
-
-        private void FileUploadButton_Click(object sender, RoutedEventArgs e)
-        {
-            guideVM.UploadGuide(GuideName.Text, FilePath.Text, GuideCategoryComboBox.Text);
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
         }
 
         private void ChiliButton_Click(object sender, RoutedEventArgs e)
@@ -72,6 +56,17 @@ namespace ElearningApp
         {
             GuideWindow guideWindow = new GuideWindow(FlatPayButton.Content.ToString());
             guideWindow.Show();
+        }
+
+        private void uploadGuideButton_Click(object sender, RoutedEventArgs e)
+        {
+            UploadGuideWindow uploadGuideWindow = new UploadGuideWindow();
+            uploadGuideWindow.Show();
+        }
+        private void updateOrDeleteGuideButton_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateOrDeleteGuideWindow updateGuideWindow = new UpdateOrDeleteGuideWindow();
+            updateGuideWindow.Show();
         }
     }
 }
