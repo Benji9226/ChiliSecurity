@@ -76,17 +76,16 @@ namespace ElearningApp.Persistence
             {
                 if (guide.GuideName == guideToUpdate.GuideName && guide.Category == guideToUpdate.Category)
                 {
-                    guide.GuideName = updatedGuideName;
-                    guide.LearningMaterial = updatedLearningMaterial;
-                    guide.Category = updatedCategory;
 
-                    string sqlQuery = "Update Guide Set LearningMaterial = @LearningMaterial Where GuideName = @Guidename and Category = @Category";
+                    string sqlQuery = "UPDATE Guide SET GuideName = @GuideName, LearningMaterial = @LearningMaterial, Category = @Category WHERE GuideName = @guideToUpdateGuideName AND Category = @guideToUpdateCategory";
                     using (SqlConnection conn = new SqlConnection(connectionString))
                     {
                         SqlCommand cmd = new SqlCommand(sqlQuery, conn);
-                        cmd.Parameters.Add("@GuideName", SqlDbType.NVarChar).Value = guideToUpdate.GuideName;
-                        cmd.Parameters.Add("@LearningMaterial", SqlDbType.NVarChar).Value = guideToUpdate.LearningMaterial;
-                        cmd.Parameters.Add("@Category", SqlDbType.NVarChar).Value = guideToUpdate.Category;
+                        cmd.Parameters.Add("@guideToUpdateGuideName", SqlDbType.NVarChar).Value = guideToUpdate.GuideName;
+                        cmd.Parameters.Add("@guideToUpdateCategory", SqlDbType.NVarChar).Value = guideToUpdate.Category;
+                        cmd.Parameters.Add("@GuideName", SqlDbType.NVarChar).Value = updatedGuideName;
+                        cmd.Parameters.Add("@LearningMaterial", SqlDbType.VarBinary).Value = updatedLearningMaterial;
+                        cmd.Parameters.Add("@Category", SqlDbType.NVarChar).Value = updatedCategory;
                         conn.Open();
                         cmd.ExecuteNonQuery();
                     }
@@ -101,9 +100,7 @@ namespace ElearningApp.Persistence
             {
                 if (guide.GuideName == guideToDelete.GuideName && guide.Category == guideToDelete.Category)
                 {
-                    guides.Remove(guide);
-
-                    string sqlQuery = "Delete from Guide Where GuideName = @GuideName And Category = @Category";
+                    string sqlQuery = "DELETE FROM Guide WHERE GuideName = @GuideName AND Category = @Category";
                     using (SqlConnection conn = new SqlConnection(connectionString))
                     {
                         SqlCommand cmd = new SqlCommand(sqlQuery, conn);
@@ -112,6 +109,7 @@ namespace ElearningApp.Persistence
                         conn.Open();
                         cmd.ExecuteNonQuery();
                     }
+                    guides.Remove(guide);
                     break;
                 }
             }
