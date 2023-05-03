@@ -17,10 +17,10 @@
             <TabItem x:Name="HomeTab" Header="Hjem" Margin="74,162,-112,-162">
                 <Grid Margin="0,-5,0,-2">
                     <Label x:Name="HomeTabGuideHeaderLabel" Content="Guides" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="436,29,0,0" Foreground="White" FontWeight="Bold" FontSize="24"/>
-                    <Button x:Name="ChiliButton" Content="Chili" HorizontalAlignment="Left" Margin="254,128,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="ChiliButton_Click"/>
-                    <Button x:Name="EWIIButton" Content="EWII" HorizontalAlignment="Left" Margin="531,128,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="EWIIButton_Click" />
-                    <Button x:Name="EnergiFynButton" Content="EnergiFyn" HorizontalAlignment="Left" Margin="254,298,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="EnergiFynButton_Click"/>
-                    <Button x:Name="FlatPayButton" Content="FlatPay" HorizontalAlignment="Left" Margin="531,298,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="FlatPlayButton_Click"/>
+                    <Button x:Name="ChiliButton" Content="Chili" HorizontalAlignment="Left" Margin="254,128,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="CategoryButton_Click"/>
+                    <Button x:Name="EWIIButton" Content="EWII" HorizontalAlignment="Left" Margin="531,128,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="CategoryButton_Click" />
+                    <Button x:Name="EnergiFynButton" Content="EnergiFyn" HorizontalAlignment="Left" Margin="254,298,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="CategoryButton_Click"/>
+                    <Button x:Name="FlatPayButton" Content="FlatPay" HorizontalAlignment="Left" Margin="531,298,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="CategoryButton_Click"/>
                     <Rectangle HorizontalAlignment="Left" Height="444" Margin="-14,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="154" Fill="Black"/>
                     <Image x:Name="ChiliLogo" HorizontalAlignment="Left" Height="100" Margin="21,10,0,0" VerticalAlignment="Top" Width="100" Source="/Images/ChiliSecurityLogo.png"/>
                 </Grid>
@@ -29,8 +29,8 @@
                 <Grid Margin="0,-15,0,-2">
                     <Rectangle HorizontalAlignment="Left" Height="432" Margin="-14,22,0,0" Stroke="Black" VerticalAlignment="Top" Width="154" Fill="Black"/>
                     <Image x:Name="ChiliLogo_Copy" HorizontalAlignment="Left" Height="100" Margin="21,20,0,0" VerticalAlignment="Top" Width="100" Source="/Images/ChiliSecurityLogo.png"/>
-                    <Button x:Name="uploadGuideButton" Content="Upload" HorizontalAlignment="Left" Margin="207,100,0,0" VerticalAlignment="Top" Click="uploadGuideButton_Click" Height="56" Width="200"/>
-                    <Button x:Name="updateOrDeleteGuideButton" Content="Update or Delete" HorizontalAlignment="Left" Margin="207,167,0,0" VerticalAlignment="Top" Click="updateOrDeleteGuideButton_Click" Height="56" Width="200"/>
+                    <Button x:Name="uploadGuideButton" Content="Upload" HorizontalAlignment="Left" Margin="207,100,0,0" VerticalAlignment="Top" Click="UploadGuideButton_Click" Height="56" Width="200"/>
+                    <Button x:Name="updateOrDeleteGuideButton" Content="Update or Delete" HorizontalAlignment="Left" Margin="207,167,0,0" VerticalAlignment="Top" Click="UpdateOrDeleteGuideButton_Click" Height="56" Width="200"/>
                     <Label Content="Guides:" HorizontalAlignment="Left" Margin="207,58,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="24"/>
                 </Grid>
             </TabItem>

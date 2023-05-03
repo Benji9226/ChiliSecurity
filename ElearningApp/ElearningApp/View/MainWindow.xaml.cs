@@ -22,48 +22,35 @@ using System.Windows.Shapes;
 using Path = System.IO.Path;
 
 namespace ElearningApp
-{
+{ 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void ChiliButton_Click(object sender, RoutedEventArgs e)
+        private void CategoryButton_Click(object sender, RoutedEventArgs e)
         {
-            GuideWindow guideWindow = new GuideWindow(ChiliButton.Content.ToString());
+            TargetedButtonAction(sender);
+        }
+
+        private void TargetedButtonAction(Object sender)
+        {
+            Button targetButton = (sender as Button);
+            GuideWindow guideWindow = new GuideWindow(targetButton.Content.ToString());
             guideWindow.Show();
         }
 
-        private void EWIIButton_Click(object sender, RoutedEventArgs e)
-        {
-            GuideWindow guideWindow = new GuideWindow(EWIIButton.Content.ToString());
-            guideWindow.Show();
-        }
-
-        private void EnergiFynButton_Click(object sender, RoutedEventArgs e)
-        {
-            GuideWindow guideWindow = new GuideWindow(EnergiFynButton.Content.ToString());
-            guideWindow.Show();
-        }
-
-        private void FlatPlayButton_Click(object sender, RoutedEventArgs e)
-        {
-            GuideWindow guideWindow = new GuideWindow(FlatPayButton.Content.ToString());
-            guideWindow.Show();
-        }
-
-        private void uploadGuideButton_Click(object sender, RoutedEventArgs e)
+        private void UploadGuideButton_Click(object sender, RoutedEventArgs e)
         {
             UploadGuideWindow uploadGuideWindow = new UploadGuideWindow();
             uploadGuideWindow.Show();
         }
-        private void updateOrDeleteGuideButton_Click(object sender, RoutedEventArgs e)
+        private void UpdateOrDeleteGuideButton_Click(object sender, RoutedEventArgs e)
         {
             UpdateOrDeleteGuideWindow updateGuideWindow = new UpdateOrDeleteGuideWindow();
             updateGuideWindow.Show();
