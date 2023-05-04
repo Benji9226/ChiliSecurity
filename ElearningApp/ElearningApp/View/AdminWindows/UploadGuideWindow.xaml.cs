@@ -22,11 +22,13 @@ namespace ElearningApp.View
     /// </summary>
     public partial class UploadGuideWindow : Window
     {
+        public MainWindow mW { get; set; }
         GuideViewModel guideVM = new GuideViewModel();
 
         public UploadGuideWindow()
         {
             InitializeComponent();
+
         }
 
         private void FileExplorerOpenButton_Click(object sender, RoutedEventArgs e)

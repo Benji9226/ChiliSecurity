@@ -35,11 +35,6 @@ namespace ElearningApp
 
         private void CategoryButton_Click(object sender, RoutedEventArgs e)
         {
-            TargetedButtonAction(sender);
-        }
-
-        private void TargetedButtonAction(Object sender)
-        {
             Button targetButton = (sender as Button);
             GuideWindow guideWindow = new GuideWindow(targetButton.Content.ToString());
             guideWindow.Show();
