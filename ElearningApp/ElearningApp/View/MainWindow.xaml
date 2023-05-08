@@ -5,9 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElearningApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Width="{x:Static SystemParameters.PrimaryScreenWidth}"  
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
+        Title="MainWindow" WindowState="Maximized">
     <Grid>
-        <TabControl x:Name="TabController" TabStripPlacement="Left" Margin="-59,0,0,0">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#e21643" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Rectangle Stroke="Black" Margin="0,0,1570,0" Fill="Black"/>
+        <StackPanel Margin="0,292,1570,0">
+            <Button Content="Home" Click="HomePage_Click" FontSize="24"/>
+            <Button Content="Guides" Click="GuidesPage_Click" FontSize="24"/>
+            <Button Content="Admin" Click="AdminPage_Click" FontSize="24"/>
+        </StackPanel>
+        <Frame x:Name="MainPage" Margin="350,0,0,0" NavigationUIVisibility="Hidden"/>
+        <Image x:Name="ChiliLogo"  Margin="22,0,1557,777" Source="/Images/ChiliSecurityLogo.png"/>
+
+
+
+        <!--<TabControl x:Name="TabController" TabStripPlacement="Left" Margin="-59,0,0,0">
             <TabControl.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -21,7 +40,6 @@
                     <Button x:Name="EWIIButton" Content="EWII" HorizontalAlignment="Left" Margin="531,128,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="CategoryButton_Click" />
                     <Button x:Name="EnergiFynButton" Content="EnergiFyn" HorizontalAlignment="Left" Margin="254,298,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="CategoryButton_Click"/>
                     <Button x:Name="FlatPayButton" Content="FlatPay" HorizontalAlignment="Left" Margin="531,298,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="CategoryButton_Click"/>
-                    <Rectangle HorizontalAlignment="Left" Height="444" Margin="-14,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="154" Fill="Black"/>
                     <Image x:Name="ChiliLogo" HorizontalAlignment="Left" Height="100" Margin="21,10,0,0" VerticalAlignment="Top" Width="100" Source="/Images/ChiliSecurityLogo.png"/>
                 </Grid>
             </TabItem>
@@ -34,6 +52,6 @@
                     <Label Content="Guides:" HorizontalAlignment="Left" Margin="207,58,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="24"/>
                 </Grid>
             </TabItem>
-        </TabControl>
+        </TabControl>-->
     </Grid>
 </Window>
