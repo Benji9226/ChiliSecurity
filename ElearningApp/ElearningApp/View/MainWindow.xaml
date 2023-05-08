@@ -32,6 +32,7 @@
                     <Button x:Name="uploadGuideButton" Content="Upload" HorizontalAlignment="Left" Margin="207,100,0,0" VerticalAlignment="Top" Click="UploadGuideButton_Click" Height="56" Width="200"/>
                     <Button x:Name="updateOrDeleteGuideButton" Content="Update or Delete" HorizontalAlignment="Left" Margin="207,167,0,0" VerticalAlignment="Top" Click="UpdateOrDeleteGuideButton_Click" Height="56" Width="200"/>
                     <Label Content="Guides:" HorizontalAlignment="Left" Margin="207,58,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="24"/>
+                    <Button x:Name="ShowAddEmployeeWindowButton" Content="Add employee" HorizontalAlignment="Left" Margin="207,238,0,0" VerticalAlignment="Top" Height="56" Width="200" Click="ShowAddEmployeeWindowButton_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

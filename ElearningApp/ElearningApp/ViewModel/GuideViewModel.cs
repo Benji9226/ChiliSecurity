@@ -38,7 +38,6 @@ namespace ElearningApp.ViewModel
         {
             Guide guide = guideRepo.GetByNameAndCategory(guideToLoadName, guideToLoadCategory);
             if (!File.Exists($"Guides\\{guideToLoadCategory}\\{guide.GuideName}.pdf")) { CreateGuideFile(guide.GuideName, guide.Category); }
-            CreateGuideFile(guide.GuideName, guide.Category);
             ShowGuide(guide);
         }
 

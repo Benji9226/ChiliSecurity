@@ -39,7 +39,6 @@ namespace ElearningApp
             GuideWindow guideWindow = new GuideWindow(targetButton.Content.ToString());
             guideWindow.Show();
         }
-
         private void UploadGuideButton_Click(object sender, RoutedEventArgs e)
         {
             UploadGuideWindow uploadGuideWindow = new UploadGuideWindow();
@@ -49,6 +48,11 @@ namespace ElearningApp
         {
             UpdateOrDeleteGuideWindow updateGuideWindow = new UpdateOrDeleteGuideWindow();
             updateGuideWindow.Show();
+        }
+        private void ShowAddEmployeeWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeeWindow employeeWindow = new EmployeeWindow();
+            employeeWindow.Show();
         }
     }
 }
