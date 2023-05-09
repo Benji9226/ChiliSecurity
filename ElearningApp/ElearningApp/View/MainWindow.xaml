@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElearningApp"
         mc:Ignorable="d"
-        Width="{x:Static SystemParameters.PrimaryScreenWidth}"  
-        Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
-        Title="MainWindow" WindowState="Maximized">
+        Width="1440"
+        Height="900"
+        Title="MainWindow">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -15,14 +15,14 @@
                 <GradientStop Color="#e21643" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Rectangle Stroke="Black" Margin="0,0,1570,0" Fill="Black"/>
-        <StackPanel Margin="0,292,1570,0">
+        <Rectangle Stroke="Black" Margin="0,0,1200,0" Fill="Black"/>
+        <StackPanel Margin="0,206,1200,0">
             <Button Content="Home" Click="HomePage_Click" FontSize="24"/>
             <Button Content="Guides" Click="GuidesPage_Click" FontSize="24"/>
             <Button Content="Admin" Click="AdminPage_Click" FontSize="24"/>
         </StackPanel>
-        <Frame x:Name="MainPage" Margin="350,0,0,0" NavigationUIVisibility="Hidden"/>
-        <Grid Margin="0,0,1575,777">
+        <Frame x:Name="MainPage" Margin="240,0,0,0" NavigationUIVisibility="Hidden" Width="1200"/>
+        <Grid Margin="-11,0,1200,678">
             <Image x:Name="ChiliLogo"  Margin="50,0,0,0" Source="/Images/ChiliSecurityLogo.png"/>
         </Grid>
     </Grid>

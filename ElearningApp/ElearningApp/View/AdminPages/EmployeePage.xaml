@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ElearningApp.View.AdminPages"
       mc:Ignorable="d" 
-      d:DesignHeight="1064" d:DesignWidth="1570"
+      d:DesignHeight="844" d:DesignWidth="1200"
       Title="EmployeePage">
 
     <Grid>

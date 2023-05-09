@@ -5,9 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ElearningApp.View.GuidePages"
       mc:Ignorable="d" 
-      d:DesignHeight="1064" d:DesignWidth="1570"
+      d:DesignHeight="844" d:DesignWidth="1200"
       Title="GuidesCategoryPage">
-
+      
     <Grid>
         <Label x:Name="HomeTabGuideHeaderLabel" Content="Guides" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" Foreground="White" FontWeight="Bold" FontSize="72"/>
         <Button x:Name="ChiliButton" Content="Chili" HorizontalAlignment="Center" Margin="0,121,0,0" VerticalAlignment="Top" Height="75" Width="750" Background="White" Click="CategoryButton_Click" FontSize="36"/>

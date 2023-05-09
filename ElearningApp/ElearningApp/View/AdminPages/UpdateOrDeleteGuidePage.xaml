@@ -5,11 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ElearningApp.View.AdminPages"
       mc:Ignorable="d" 
-      d:DesignHeight="1064" d:DesignWidth="1570"
+      d:DesignHeight="844" d:DesignWidth="1200"
       Title="UpdateOrDeleteGuidePage">
 
     <Grid>
-        <Grid Margin="10,10,1250,10">
+        <Grid Margin="10,10,880,10">
             <Label x:Name="GuideCategoryLabel" FontSize="24" Content="Guide Category:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White"/>
             <ComboBox x:Name="GuideCategoryComboBox" HorizontalAlignment="Left" Margin="0,42,0,0" VerticalAlignment="Top" Width="300" SelectionChanged="ComboBox_SelectionChanged" FontSize="18">
                 <ComboBoxItem>Chili</ComboBoxItem>
@@ -28,19 +28,19 @@
         <Grid Margin="320,0,0,0">
             <Label Content="Selected Guide:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="72"/>
             <Label x:Name="GuideNameLabel" Content="Guide Name:" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Foreground="White" FontSize="36" FontWeight="Bold"/>
-            <TextBox x:Name="GuideName" Text="{Binding SelectedGuideVM.GuideName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="10,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" FontSize="18"/>
-            <Label x:Name="UpdateOrDeleteGuideCategoryLabel" Content="Guide Category:" HorizontalAlignment="Left" Margin="655,150,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="36"/>
-            <ComboBox x:Name="updateOrDeleteGuideCategoryComboBox" HorizontalAlignment="Left" Margin="655,208,0,0" VerticalAlignment="Top" Width="500" SelectionChanged="UpdateComboBox_SelectionChanged" RenderTransformOrigin="0.502,0.659" FontSize="18">
+            <TextBox x:Name="GuideName" Text="{Binding SelectedGuideVM.GuideName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="10,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="18"/>
+            <Label x:Name="UpdateOrDeleteGuideCategoryLabel" Content="Guide Category:" HorizontalAlignment="Left" Margin="484,150,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="36"/>
+            <ComboBox x:Name="updateOrDeleteGuideCategoryComboBox" HorizontalAlignment="Left" Margin="484,204,0,0" VerticalAlignment="Top" Width="350" SelectionChanged="UpdateComboBox_SelectionChanged" RenderTransformOrigin="0.502,0.659" FontSize="18">
                 <ComboBoxItem>Chili</ComboBoxItem>
                 <ComboBoxItem>EWII</ComboBoxItem>
                 <ComboBoxItem>EnergiFyn</ComboBoxItem>
                 <ComboBoxItem>FlatPay</ComboBoxItem>
             </ComboBox>
             <Label x:Name="FileLocationLabel" Content="File Location" HorizontalAlignment="Left" Margin="10,275,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="36"/>
-            <TextBox x:Name="FilePath" HorizontalAlignment="Left" Margin="10,333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" FontSize="18"/>
+            <TextBox x:Name="FilePath" HorizontalAlignment="Left" Margin="10,333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="18"/>
             <Button x:Name="FileExplorerOpenButton" Content="Select file" HorizontalAlignment="Left" Margin="10,375,0,0" VerticalAlignment="Top" Click="FileExplorerOpenButton_Click" Width="200" FontSize="18"/>
-            <Button x:Name="updateThisGuideButton" Content="Update" HorizontalAlignment="Left" Margin="730,787,0,0" VerticalAlignment="Top" Width="250" Click="updateThisGuideButton_Click" FontSize="36" FontWeight="Bold"/>
-            <Button x:Name="deleteGuideButton" Content="Delete Guide" HorizontalAlignment="Left" Margin="151,787,0,0" VerticalAlignment="Top" Width="250" Click="deleteGuideButton_Click" FontSize="36" FontWeight="Bold"/>
+            <Button x:Name="updateThisGuideButton" Content="Update" HorizontalAlignment="Left" Margin="584,761,0,0" VerticalAlignment="Top" Width="250" Click="updateThisGuideButton_Click" FontSize="36" FontWeight="Bold"/>
+            <Button x:Name="deleteGuideButton" Content="Delete Guide" HorizontalAlignment="Left" Margin="26,761,0,0" VerticalAlignment="Top" Width="250" Click="deleteGuideButton_Click" FontSize="36" FontWeight="Bold"/>
         </Grid>
     </Grid>
 </Page>

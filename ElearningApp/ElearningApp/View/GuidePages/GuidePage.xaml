@@ -5,11 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ElearningApp.View.GuidePages"
       mc:Ignorable="d" 
-      d:DesignHeight="1064" d:DesignWidth="1570"
+      d:DesignHeight="844" d:DesignWidth="1200"
       Title="GuidePage">
 
     <Grid>
-        <Grid Margin="10,10,1150,10">
+        <Grid Margin="10,10,850,10">
             <ListBox x:Name="guidesListBox" ItemsSource="{Binding GuidesVM}" SelectedItem="{Binding SelectedGuideVM}" BorderThickness="10" BorderBrush="Black">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -18,10 +18,10 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
-        <Grid Margin="420,0,0,0">
-            <Button x:Name="openSelectedPdfButton" Click="OpenSelectedPdfButton_Click" Content="OPEN" HorizontalAlignment="Left" Margin="713,800,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="250" Height="100" FontSize="24"/>
-            <Button x:Name="openQuizButton" Click="OpenQuizButton_Click" Content="QUIZ" HorizontalAlignment="Left" Margin="269,805,0,0" VerticalAlignment="Top" Width="250" Height="100" FontWeight="Bold" FontSize="24"/>
+        <Grid Margin="355,0,0,0">
+            <Label x:Name="guideCategory" Content="Category" HorizontalAlignment="Center" Margin="0,176,0,0" VerticalAlignment="Top" FontSize="72" FontWeight="Bold" Foreground="White"/>
+            <Button x:Name="openSelectedPdfButton" Click="OpenSelectedPdfButton_Click" Content="OPEN" HorizontalAlignment="Left" Margin="485,665,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="250" Height="100" FontSize="24"/>
+            <Button x:Name="openQuizButton" Click="OpenQuizButton_Click" Content="QUIZ" HorizontalAlignment="Left" Margin="96,665,0,0" VerticalAlignment="Top" Width="250" Height="100" FontWeight="Bold" FontSize="24"/>
         </Grid>
-        <Label x:Name="guideCategory" Content="Category" HorizontalAlignment="Left" Margin="886,203,0,0" VerticalAlignment="Top" FontSize="72" FontWeight="Bold"/>
     </Grid>
 </Page>
