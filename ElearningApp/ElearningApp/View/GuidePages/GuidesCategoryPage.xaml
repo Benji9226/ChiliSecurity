@@ -1,12 +1,12 @@
-﻿<Page x:Class="ElearningApp.View.Pages.GuidesPage"
+﻿<Page x:Class="ElearningApp.View.GuidePages.GuidesCategoryPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ElearningApp.View.Pages"
+      xmlns:local="clr-namespace:ElearningApp.View.GuidePages"
       mc:Ignorable="d" 
       d:DesignHeight="1064" d:DesignWidth="1570"
-      Title="GuidesPage">
+      Title="GuidesCategoryPage">
 
     <Grid>
         <Label x:Name="HomeTabGuideHeaderLabel" Content="Guides" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" Foreground="White" FontWeight="Bold" FontSize="72"/>

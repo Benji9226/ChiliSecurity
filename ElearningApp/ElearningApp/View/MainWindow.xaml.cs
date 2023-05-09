@@ -1,6 +1,6 @@
 ﻿using ElearningApp.View;
-using ElearningApp.View.AdminWindows;
 using ElearningApp.View.Pages;
+using ElearningApp.View.GuidePages;
 using ElearningApp.ViewModel;
 using Microsoft.Win32;
 using System;
@@ -32,7 +32,7 @@ namespace ElearningApp
         public MainWindow()
         {
             InitializeComponent();
-            MainPage.Content = new GuidesPage();
+            MainPage.Content = new HomePage();
         }
         private void HomePage_Click(object sender, RoutedEventArgs e)
         {
@@ -41,14 +41,12 @@ namespace ElearningApp
 
         private void GuidesPage_Click(object sender, RoutedEventArgs e)
         {
-            MainPage.Content = new GuidesPage();
+            MainPage.Content = new GuidesCategoryPage();
         }
 
         private void AdminPage_Click(object sender, RoutedEventArgs e)
         {
             MainPage.Content = new AdminPage();
         }
-
-        
     }
 }

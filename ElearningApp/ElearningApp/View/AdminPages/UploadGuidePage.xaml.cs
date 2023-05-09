@@ -13,24 +13,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ElearningApp.View
+namespace ElearningApp.View.AdminPages
 {
     /// <summary>
-    /// Interaction logic for UploadGuideWindow.xaml
+    /// Interaction logic for UploadGuidePage.xaml
     /// </summary>
-    public partial class UploadGuideWindow : Window
+    public partial class UploadGuidePage : Page
     {
-        public MainWindow mW { get; set; }
         GuideViewModel guideVM = new GuideViewModel();
-
-        public UploadGuideWindow()
+        public UploadGuidePage()
         {
             InitializeComponent();
-
         }
-
         private void FileExplorerOpenButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog FileExplorer = new OpenFileDialog();

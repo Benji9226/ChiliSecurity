@@ -12,18 +12,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ElearningApp.View.AdminWindows
+namespace ElearningApp.View.AdminPages
 {
     /// <summary>
-    /// Interaction logic for UpdateGuideWindow.xaml
+    /// Interaction logic for UpdateOrDeleteGuidePage.xaml
     /// </summary>
-    public partial class UpdateOrDeleteGuideWindow : Window
+    public partial class UpdateOrDeleteGuidePage : Page
     {
         MainViewModel mvm;
-
-        public UpdateOrDeleteGuideWindow()
+        public UpdateOrDeleteGuidePage()
         {
             InitializeComponent();
         }

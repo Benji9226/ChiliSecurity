@@ -13,22 +13,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ElearningApp.View.Pages
+namespace ElearningApp.View.GuidePages
 {
     /// <summary>
-    /// Interaction logic for GuidesPage.xaml
+    /// Interaction logic for GuidesCategoryPage.xaml
     /// </summary>
-    public partial class GuidesPage : Page
+    public partial class GuidesCategoryPage : Page
     {
-        public GuidesPage()
+        public GuidesCategoryPage()
         {
             InitializeComponent();
         }
+
         private void CategoryButton_Click(object sender, RoutedEventArgs e)
         {
             Button targetButton = (sender as Button);
-            GuideWindow guideWindow = new GuideWindow(targetButton.Content.ToString());
-            guideWindow.Show();
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.MainPage.NavigationService.Navigate(new GuidePage(targetButton.Content.ToString()));
         }
     }
 }

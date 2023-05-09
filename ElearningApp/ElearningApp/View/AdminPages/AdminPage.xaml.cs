@@ -1,4 +1,5 @@
-﻿using ElearningApp.View.AdminWindows;
+﻿using ElearningApp.View.AdminPages;
+using ElearningApp.View.GuidePages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,13 +28,13 @@ namespace ElearningApp.View.Pages
         }
         private void UploadGuideButton_Click(object sender, RoutedEventArgs e)
         {
-            UploadGuideWindow uploadGuideWindow = new UploadGuideWindow();
-            uploadGuideWindow.Show();
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.MainPage.NavigationService.Navigate(new UploadGuidePage());
         }
         private void UpdateOrDeleteGuideButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdateOrDeleteGuideWindow updateGuideWindow = new UpdateOrDeleteGuideWindow();
-            updateGuideWindow.Show();
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.MainPage.NavigationService.Navigate(new UpdateOrDeleteGuidePage());
         }
     }
 }

@@ -11,17 +11,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ElearningApp.View
+namespace ElearningApp.View.GuidePages
 {
     /// <summary>
-    /// Interaction logic for GuideWindow.xaml
+    /// Interaction logic for GuidePage.xaml
     /// </summary>
-    public partial class GuideWindow : Window
+    public partial class GuidePage : Page
     {
         MainViewModel mvm;
-        public GuideWindow(string category)
+        public GuidePage(string category)
         {
             InitializeComponent();
             mvm = new MainViewModel(category);
