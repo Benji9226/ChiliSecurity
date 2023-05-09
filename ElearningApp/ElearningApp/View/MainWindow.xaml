@@ -5,36 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElearningApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Width="{x:Static SystemParameters.PrimaryScreenWidth}"  
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}" 
+        Title="MainWindow" WindowState="Maximized">
     <Grid>
-        <TabControl x:Name="TabController" TabStripPlacement="Left" Margin="-59,0,0,0">
-            <TabControl.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="#e21643" Offset="1"/>
-                </LinearGradientBrush>
-            </TabControl.Background>
-            <TabItem x:Name="HomeTab" Header="Hjem" Margin="74,162,-112,-162">
-                <Grid Margin="0,-5,0,-2">
-                    <Label x:Name="HomeTabGuideHeaderLabel" Content="Guides" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="436,29,0,0" Foreground="White" FontWeight="Bold" FontSize="24"/>
-                    <Button x:Name="ChiliButton" Content="Chili" HorizontalAlignment="Left" Margin="254,128,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="CategoryButton_Click"/>
-                    <Button x:Name="EWIIButton" Content="EWII" HorizontalAlignment="Left" Margin="531,128,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="CategoryButton_Click" />
-                    <Button x:Name="EnergiFynButton" Content="EnergiFyn" HorizontalAlignment="Left" Margin="254,298,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="CategoryButton_Click"/>
-                    <Button x:Name="FlatPayButton" Content="FlatPay" HorizontalAlignment="Left" Margin="531,298,0,0" VerticalAlignment="Top" Height="75" Width="175" Background="White" Click="CategoryButton_Click"/>
-                    <Rectangle HorizontalAlignment="Left" Height="444" Margin="-14,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="154" Fill="Black"/>
-                    <Image x:Name="ChiliLogo" HorizontalAlignment="Left" Height="100" Margin="21,10,0,0" VerticalAlignment="Top" Width="100" Source="/Images/ChiliSecurityLogo.png"/>
-                </Grid>
-            </TabItem>
-            <TabItem x:Name="AdminTab" Header="Admin" Margin="72,300,-112,-304">
-                <Grid Margin="0,-15,0,-2">
-                    <Rectangle HorizontalAlignment="Left" Height="432" Margin="-14,22,0,0" Stroke="Black" VerticalAlignment="Top" Width="154" Fill="Black"/>
-                    <Image x:Name="ChiliLogo_Copy" HorizontalAlignment="Left" Height="100" Margin="21,20,0,0" VerticalAlignment="Top" Width="100" Source="/Images/ChiliSecurityLogo.png"/>
-                    <Button x:Name="uploadGuideButton" Content="Upload" HorizontalAlignment="Left" Margin="207,100,0,0" VerticalAlignment="Top" Click="UploadGuideButton_Click" Height="56" Width="200"/>
-                    <Button x:Name="updateOrDeleteGuideButton" Content="Update or Delete" HorizontalAlignment="Left" Margin="207,167,0,0" VerticalAlignment="Top" Click="UpdateOrDeleteGuideButton_Click" Height="56" Width="200"/>
-                    <Label Content="Guides:" HorizontalAlignment="Left" Margin="207,58,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="24"/>
-                    <Button x:Name="ShowAddEmployeeWindowButton" Content="Add employee" HorizontalAlignment="Left" Margin="207,238,0,0" VerticalAlignment="Top" Height="56" Width="200" Click="ShowAddEmployeeWindowButton_Click"/>
-                </Grid>
-            </TabItem>
-        </TabControl>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#e21643" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Rectangle Stroke="Black" Margin="0,0,1570,0" Fill="Black"/>
+        <StackPanel Margin="0,292,1570,0">
+            <Button Content="Home" Click="HomePage_Click" FontSize="24"/>
+            <Button Content="Guides" Click="GuidesPage_Click" FontSize="24"/>
+            <Button Content="Admin" Click="AdminPage_Click" FontSize="24"/>
+        </StackPanel>
+        <Frame x:Name="MainPage" Margin="350,0,0,0" NavigationUIVisibility="Hidden"/>
+        <Grid Margin="0,0,1575,777">
+            <Image x:Name="ChiliLogo"  Margin="50,0,0,0" Source="/Images/ChiliSecurityLogo.png"/>
+        </Grid>
     </Grid>
 </Window>

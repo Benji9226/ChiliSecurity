@@ -45,7 +45,8 @@ namespace ElearningApp.ViewModel
         {
             if (guideName != "" && filePath != "" && category != "")
             {
-                foreach (Guide guide in guideRepo.GetAll())
+                List<Guide> guideList = guideRepo.GetAll();
+                foreach (Guide guide in guideList)
                 {
                     if (guideName == guide.GuideName && category == guide.Category)
                     {

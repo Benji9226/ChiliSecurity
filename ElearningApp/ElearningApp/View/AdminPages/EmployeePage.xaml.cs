@@ -11,14 +11,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ElearningApp.View.AdminWindows
+namespace ElearningApp.View.AdminPages
 {
     /// <summary>
-    /// Interaction logic for EmployeeWindow.xaml
+    /// Interaction logic for EmployeePage.xaml
     /// </summary>
-    public partial class EmployeeWindow : Window
+    public partial class EmployeePage : Page
     {
         EmployeeViewModel empViewModel = new EmployeeViewModel();
 
@@ -27,12 +28,9 @@ namespace ElearningApp.View.AdminWindows
         private string email;
         private int amountGuideCompleted = 0;
 
-
-
-        public EmployeeWindow()
+        public EmployeePage()
         {
             InitializeComponent();
-            
         }
 
         private void AddEmployeeButton_Click(object sender, RoutedEventArgs e)

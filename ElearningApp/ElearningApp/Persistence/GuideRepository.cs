@@ -47,7 +47,6 @@ namespace ElearningApp.Persistence
             
                 using (SqlDataReader reader = cmd.ExecuteReader()) 
                 {
-
                     while (reader.Read())
                     {
                         Guide guide = new Guide(reader["GuideName"].ToString(), (byte[])reader["LearningMaterial"], reader["Category"].ToString());

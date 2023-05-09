@@ -1,0 +1,19 @@
+﻿<Page x:Class="ElearningApp.View.GuidePages.GuidesCategoryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ElearningApp.View.GuidePages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1064" d:DesignWidth="1570"
+      Title="GuidesCategoryPage">
+
+    <Grid>
+        <Label x:Name="HomeTabGuideHeaderLabel" Content="Guides" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" Foreground="White" FontWeight="Bold" FontSize="72"/>
+        <Button x:Name="ChiliButton" Content="Chili" HorizontalAlignment="Center" Margin="0,121,0,0" VerticalAlignment="Top" Height="75" Width="750" Background="White" Click="CategoryButton_Click" FontSize="36"/>
+        <Button x:Name="EWIIButton" Content="EWII" HorizontalAlignment="Center" Margin="0,201,0,0" VerticalAlignment="Top" Height="76" Width="750" Background="White" Click="CategoryButton_Click" FontSize="36" />
+        <Button x:Name="EnergiFynButton" Content="EnergiFyn" HorizontalAlignment="Center" Margin="0,363,0,0" VerticalAlignment="Top" Height="75" Width="750" Background="White" Click="CategoryButton_Click" FontSize="36"/>
+        <Button x:Name="FlatPayButton" Content="FlatPay" HorizontalAlignment="Center" Margin="0,282,0,0" VerticalAlignment="Top" Height="76" Width="750" Background="White" Click="CategoryButton_Click" FontSize="36"/>
+        <Frame x:Name="MainPage" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Page>

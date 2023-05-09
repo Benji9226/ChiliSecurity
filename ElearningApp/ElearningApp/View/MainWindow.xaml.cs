@@ -1,5 +1,6 @@
 ﻿using ElearningApp.View;
-using ElearningApp.View.AdminWindows;
+using ElearningApp.View.Pages;
+using ElearningApp.View.GuidePages;
 using ElearningApp.ViewModel;
 using Microsoft.Win32;
 using System;
@@ -31,28 +32,20 @@ namespace ElearningApp
         public MainWindow()
         {
             InitializeComponent();
+            MainPage.Content = new HomePage();
+        }
+        private void HomePage_Click(object sender, RoutedEventArgs e)
+        {
+            MainPage.Content = new HomePage();
         }
 
-        private void CategoryButton_Click(object sender, RoutedEventArgs e)
+        private void GuidesPage_Click(object sender, RoutedEventArgs e)
         {
-            Button targetButton = (sender as Button);
-            GuideWindow guideWindow = new GuideWindow(targetButton.Content.ToString());
-            guideWindow.Show();
+            MainPage.Content = new GuidesCategoryPage();
         }
-        private void UploadGuideButton_Click(object sender, RoutedEventArgs e)
+        private void AdminPage_Click(object sender, RoutedEventArgs e)
         {
-            UploadGuideWindow uploadGuideWindow = new UploadGuideWindow();
-            uploadGuideWindow.Show();
-        }
-        private void UpdateOrDeleteGuideButton_Click(object sender, RoutedEventArgs e)
-        {
-            UpdateOrDeleteGuideWindow updateGuideWindow = new UpdateOrDeleteGuideWindow();
-            updateGuideWindow.Show();
-        }
-        private void ShowAddEmployeeWindowButton_Click(object sender, RoutedEventArgs e)
-        {
-            EmployeeWindow employeeWindow = new EmployeeWindow();
-            employeeWindow.Show();
+            MainPage.Content = new AdminPage();
         }
     }
 }
