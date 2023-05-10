@@ -33,19 +33,51 @@ namespace ElearningApp
         {
             InitializeComponent();
             MainPage.Content = new HomePage();
+            NewRoleChoiceLbl.Visibility = Visibility.Hidden;
+            TakeNewRoleBtn.Visibility = Visibility.Hidden; 
         }
         private void HomePage_Click(object sender, RoutedEventArgs e)
         {
             MainPage.Content = new HomePage();
+            NewRoleChoiceLbl.Visibility = Visibility.Visible;
+            Welcome_Label.Visibility = Visibility.Visible;
+            TakeNewRoleBtn.Visibility= Visibility.Visible;
         }
 
         private void GuidesPage_Click(object sender, RoutedEventArgs e)
         {
             MainPage.Content = new GuidesCategoryPage();
+            Welcome_Label.Visibility = Visibility.Hidden;
         }
         private void AdminPage_Click(object sender, RoutedEventArgs e)
         {
             MainPage.Content = new AdminPage();
+            Welcome_Label.Visibility= Visibility.Hidden;
+        }
+
+        private void LeaderChoiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            AdminPageTabControle.Visibility = Visibility.Visible;
+            LeaderChoiceButton.Visibility = Visibility.Hidden;
+            EmployeeChoiceButton.Visibility = Visibility.Hidden;
+            RoleChoiceLbl.Visibility = Visibility.Hidden;
+        }
+
+        private void EmployeeChoiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            LeaderChoiceButton.Visibility = Visibility.Hidden;
+            EmployeeChoiceButton.Visibility = Visibility.Hidden;
+            RoleChoiceLbl.Visibility = Visibility.Hidden;
+            AdminPageTabControle.Visibility= Visibility.Hidden;
+        }
+
+        private void TakeNewRoleBtn_Click(object sender, RoutedEventArgs e)
+        {
+            LeaderChoiceButton.Visibility = Visibility.Visible;
+            EmployeeChoiceButton.Visibility = Visibility.Visible;
+            TakeNewRoleBtn.Visibility = Visibility.Hidden;
+            RoleChoiceLbl.Visibility = Visibility.Visible;
+            NewRoleChoiceLbl.Visibility = Visibility.Hidden;
         }
     }
 }
