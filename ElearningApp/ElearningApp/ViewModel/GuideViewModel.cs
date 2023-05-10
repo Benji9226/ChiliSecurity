@@ -43,33 +43,45 @@ namespace ElearningApp.ViewModel
 
         public void UploadGuide(string guideName, string filePath, string category)
         {
+            bool nameAlreadyExist = false;
+            string mSBox = "";
+
             if (guideName != "" && filePath != "" && category != "")
             {
                 List<Guide> guideList = guideRepo.GetAll();
+
                 foreach (Guide guide in guideList)
                 {
                     if (guideName == guide.GuideName && category == guide.Category)
                     {
-                        MessageBox.Show("The name already exist.");
+                        mSBox = "The name already exist.";
+                        nameAlreadyExist = true;
+                        break;
                     }
-                    else 
-                    {
-                        using (Stream stream = File.OpenRead(filePath))
-                        {
-                            byte[] byteArray = new byte[stream.Length];
-                            stream.Read(byteArray, 0, byteArray.Length);
-                            Guide guideToAdd = new Guide(guideName, byteArray, category);
-                            guideRepo.Add(guideToAdd);
-                        }
-                        MessageBox.Show("Guide is now uploaded.");
-                    }
+
                 }
+
+                if (nameAlreadyExist == false)
+                {
+                    using (Stream stream = File.OpenRead(filePath))
+                    {
+                        byte[] byteArray = new byte[stream.Length];
+                        stream.Read(byteArray, 0, byteArray.Length);
+                        Guide guideToAdd = new Guide(guideName, byteArray, category);
+                        guideRepo.Add(guideToAdd);
+                    }
+                    mSBox = "Guide is now uploaded.";
+                }
+
+
+                MessageBox.Show(mSBox);
+
             }
             else
             {
                 MessageBox.Show("Please fill out all boxes");
             }
-            
+
         }
 
         public void UpdateGuide(Guide guide, string newGuideName, string filePath, string newGuideCategory)
@@ -100,7 +112,7 @@ namespace ElearningApp.ViewModel
         private void ShowGuide(Guide guideToShow)
         {
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Guides\\{guideToShow.Category}\\{guideToShow.GuideName}.pdf");
-            Process.Start( new ProcessStartInfo(filePath) { UseShellExecute = true } );
+            Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
         }
     }
 }
