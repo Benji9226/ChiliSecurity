@@ -50,7 +50,7 @@ namespace ElearningApp.ViewModel
                 {
                     if (guideName == guide.GuideName && category == guide.Category)
                     {
-                        MessageBox.Show("Navnet eksistere allerede.");
+                        MessageBox.Show("The name already exist.");
                     }
                     else 
                     {
@@ -61,16 +61,15 @@ namespace ElearningApp.ViewModel
                             Guide guideToAdd = new Guide(guideName, byteArray, category);
                             guideRepo.Add(guideToAdd);
                         }
-                        MessageBox.Show("Guiden er nu uploaded.");
+                        MessageBox.Show("Guide is now uploaded.");
                     }
                 }
             }
-            else if (guideName == "")
-                MessageBox.Show("FEJL: Guide ikke navngivet");
-            else if (filePath == "")
-                MessageBox.Show("FEJL: Ingen fil valgt");
             else
-                MessageBox.Show("FEJL: Ingen kategori valgt");
+            {
+                MessageBox.Show("Please fill out all boxes");
+            }
+            
         }
 
         public void UpdateGuide(Guide guide, string newGuideName, string filePath, string newGuideCategory)
