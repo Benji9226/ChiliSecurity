@@ -13,18 +13,24 @@ namespace ElearningApp.Persistence
 {
     public class GuideRepository
     {
-
         private List<Guide> guides;
+        private bool isCacheValid;
         string connectionString = "Server=10.56.8.36; database=P3_DB_2023_03; user id=P3_PROJECT_USER_03; password=OPENDB_03; TrustServerCertificate=true;";
 
         public GuideRepository()
         {
-            guides = GetAll();
+            guides = new List<Guide>();
+            isCacheValid = false;
         }
 
         public void Add(Guide guideToAdd)
         {
             guides.Add(guideToAdd);
+            AddToDb(guideToAdd);
+        }
+
+        public void AddToDb(Guide guideToAdd)
+        {
             string sqlQuery = "INSERT INTO Guide(GuideName, LearningMaterial, Category) VALUES(@guideName, @learningMaterial, @category)";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -39,18 +45,24 @@ namespace ElearningApp.Persistence
 
         public List<Guide> GetAll()
         {
+            IsCacheValidCheck();
+            return guides;
+        }
+
+        public List<Guide> GetAllFromDb()
+        {
             List<Guide> guides = new List<Guide>();
-            using(SqlConnection conn = new SqlConnection(connectionString)) 
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Guide", conn);
-            
-                using (SqlDataReader reader = cmd.ExecuteReader()) 
+                SqlCommand cmd = new SqlCommand("SELECT GuideName, LearningMaterial, Category FROM Guide", conn);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         Guide guide = new Guide(reader["GuideName"].ToString(), (byte[])reader["LearningMaterial"], reader["Category"].ToString());
-                        guides.Add(guide);  
+                        guides.Add(guide);
                     }
                 }
             }
@@ -59,6 +71,7 @@ namespace ElearningApp.Persistence
 
         public Guide GetByNameAndCategory(string guideToGetName, string guideToGetCategory)
         {
+            IsCacheValidCheck();
             foreach (Guide guide in guides)
             {
                 if (guide.GuideName == guideToGetName && guide.Category == guideToGetCategory)
@@ -71,11 +84,11 @@ namespace ElearningApp.Persistence
 
         public void Update(Guide guideToUpdate, string updatedGuideName, byte[] updatedLearningMaterial, string updatedCategory)
         {
+            IsCacheValidCheck();
             foreach (Guide guide in guides)
             {
                 if (guide.GuideName == guideToUpdate.GuideName && guide.Category == guideToUpdate.Category)
                 {
-
                     string sqlQuery = "UPDATE Guide SET GuideName = @GuideName, LearningMaterial = @LearningMaterial, Category = @Category WHERE GuideName = @guideToUpdateGuideName AND Category = @guideToUpdateCategory";
                     using (SqlConnection conn = new SqlConnection(connectionString))
                     {
@@ -95,6 +108,7 @@ namespace ElearningApp.Persistence
 
         public void Delete(Guide guideToDelete) 
         {
+            IsCacheValidCheck();
             foreach (Guide guide in guides)
             {
                 if (guide.GuideName == guideToDelete.GuideName && guide.Category == guideToDelete.Category)
@@ -111,6 +125,15 @@ namespace ElearningApp.Persistence
                     guides.Remove(guide);
                     break;
                 }
+            }
+        }
+
+        private void IsCacheValidCheck()
+        {
+            if (!isCacheValid)
+            {
+                guides = GetAllFromDb();
+                isCacheValid = true;
             }
         }
     }
