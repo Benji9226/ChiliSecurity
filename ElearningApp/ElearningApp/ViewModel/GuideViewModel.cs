@@ -114,5 +114,7 @@ namespace ElearningApp.ViewModel
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Guides\\{guideToShow.Category}\\{guideToShow.GuideName}.pdf");
             Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
         }
+
+     
     }
 }

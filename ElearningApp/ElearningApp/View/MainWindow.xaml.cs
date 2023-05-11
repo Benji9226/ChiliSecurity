@@ -21,6 +21,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Path = System.IO.Path;
+using ElearningApp.Model;
+using ElearningApp.Persistence;
 
 namespace ElearningApp
 { 
@@ -29,55 +31,32 @@ namespace ElearningApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        EmployeeViewModel employeeVM = new EmployeeViewModel();
         public MainWindow()
         {
             InitializeComponent();
-            MainPage.Content = new HomePage();
-            NewRoleChoiceLbl.Visibility = Visibility.Hidden;
-            TakeNewRoleBtn.Visibility = Visibility.Hidden; 
+            MainPage.Content = new HomePage(this);
+
         }
         private void HomePage_Click(object sender, RoutedEventArgs e)
         {
-            MainPage.Content = new HomePage();
-            NewRoleChoiceLbl.Visibility = Visibility.Visible;
-            Welcome_Label.Visibility = Visibility.Visible;
-            TakeNewRoleBtn.Visibility= Visibility.Visible;
+            MainPage.Content = new HomePage(this);
         }
 
         private void GuidesPage_Click(object sender, RoutedEventArgs e)
         {
             MainPage.Content = new GuidesCategoryPage();
-            Welcome_Label.Visibility = Visibility.Hidden;
         }
         private void AdminPage_Click(object sender, RoutedEventArgs e)
         {
             MainPage.Content = new AdminPage();
-            Welcome_Label.Visibility= Visibility.Hidden;
         }
 
-        private void LeaderChoiceButton_Click(object sender, RoutedEventArgs e)
-        {
-            AdminPageTabControle.Visibility = Visibility.Visible;
-            LeaderChoiceButton.Visibility = Visibility.Hidden;
-            EmployeeChoiceButton.Visibility = Visibility.Hidden;
-            RoleChoiceLbl.Visibility = Visibility.Hidden;
-        }
+       
 
-        private void EmployeeChoiceButton_Click(object sender, RoutedEventArgs e)
-        {
-            LeaderChoiceButton.Visibility = Visibility.Hidden;
-            EmployeeChoiceButton.Visibility = Visibility.Hidden;
-            RoleChoiceLbl.Visibility = Visibility.Hidden;
-            AdminPageTabControle.Visibility= Visibility.Hidden;
-        }
+      
+      
 
-        private void TakeNewRoleBtn_Click(object sender, RoutedEventArgs e)
-        {
-            LeaderChoiceButton.Visibility = Visibility.Visible;
-            EmployeeChoiceButton.Visibility = Visibility.Visible;
-            TakeNewRoleBtn.Visibility = Visibility.Hidden;
-            RoleChoiceLbl.Visibility = Visibility.Visible;
-            NewRoleChoiceLbl.Visibility = Visibility.Hidden;
-        }
+
     }
 }

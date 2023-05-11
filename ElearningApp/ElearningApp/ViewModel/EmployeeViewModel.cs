@@ -20,5 +20,9 @@ namespace ElearningApp.ViewModel
             employeeRepo.AddEmployee(employeeToAdd);
         }
 
+        public List<Employee> LoadEmployees()
+        {
+            return employeeRepo.GetAllEmployees();
+        }
     }
 }

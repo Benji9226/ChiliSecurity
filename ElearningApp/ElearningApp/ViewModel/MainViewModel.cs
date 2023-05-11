@@ -13,14 +13,13 @@ namespace ElearningApp.ViewModel
     public class MainViewModel : INotifyPropertyChanged
     {
         private GuideRepository guideRepo = new GuideRepository();
-        public ObservableCollection<GuideViewModel> GuidesVM { get; set; } = new();
+        public List<GuideViewModel> GuidesVM { get; set; } = new();
         private GuideViewModel guideViewModel;
         public GuideViewModel SelectedGuideVM
         {
             get { return guideViewModel; }
             set { guideViewModel = value; OnPropertyChanged("SelectedGuideVM"); }
         }
-
         public MainViewModel()
         {
             foreach (Guide guide in guideRepo.GetAll())

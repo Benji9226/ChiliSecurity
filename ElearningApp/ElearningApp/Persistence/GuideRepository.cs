@@ -39,7 +39,7 @@ namespace ElearningApp.Persistence
 
         public List<Guide> GetAll()
         {
-            List<Guide> guides = new List<Guide>();
+            guides = new List<Guide>();
             using(SqlConnection conn = new SqlConnection(connectionString)) 
             {
                 conn.Open();

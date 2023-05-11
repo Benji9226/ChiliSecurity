@@ -11,12 +11,13 @@ namespace ElearningApp.Persistence
 {
     public class EmployeeRepository
     {
-        private List<Employee> employees = new List<Employee>();
+        private List<Employee> employees;
         string connectionString = "Server=10.56.8.36; database=P3_DB_2023_03; user id=P3_PROJECT_USER_03; password=OPENDB_03; TrustServerCertificate=true;";
 
 
         public void AddEmployee(Employee employeeToAdd)
         {
+            employees = new List<Employee>();
             employees.Add(employeeToAdd);
             string sqlQuery = "INSERT INTO Employee(FirstName, LastName, Email, AmountGuidesCompleted) VALUES(@firstName, @lastName, @email, @amountGuidesCompleted)";
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -29,9 +30,26 @@ namespace ElearningApp.Persistence
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
+        }
 
+        public List<Employee> GetAllEmployees()
+        {
+            employees = new List<Employee>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Employee", conn);
 
-
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Employee employee = new Employee(reader["FirstName"].ToString(), reader["LastName"].ToString(), reader["Email"].ToString() , int.Parse(reader["AmountGuidesCompleted"].ToString()));
+                        employees.Add(employee);
+                    }
+                }
+            }
+            return employees;
         }
 
     }

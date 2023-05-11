@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ElearningApp.Model;
+using ElearningApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,45 @@ namespace ElearningApp.View.Pages
     /// </summary>
     public partial class HomePage : Page
     {
-        public HomePage()
+        MainWindow mw;
+        EmployeeViewModel employeeVM;
+        public HomePage(MainWindow mw)
         {
             InitializeComponent();
+            this.mw = mw;
+            mw.AdminPageTabControle.Visibility = Visibility.Hidden;
+            mw.GuideTabControle.Visibility = Visibility.Hidden;
+        }
+
+        private void LeaderChoiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            LeaderChoiceButton.Visibility = Visibility.Hidden;
+            EmployeeChoiceButton.Visibility = Visibility.Hidden;
+            RoleChoiceLbl.Visibility = Visibility.Hidden;
+            mw.AdminPageTabControle.Visibility = Visibility.Visible;
+            mw.GuideTabControle.Visibility = Visibility.Visible;
+        }
+
+        private void EmployeeChoiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            employeeVM = new EmployeeViewModel();
+            LeaderChoiceButton.Visibility = Visibility.Hidden;
+            EmployeeChoiceButton.Visibility = Visibility.Hidden;
+            RoleChoiceLbl.Visibility = Visibility.Hidden;
+            mw.GuideTabControle.Visibility = Visibility.Visible;
+        }
+
+        private void TakeNewRoleBtn_Click(object sender, RoutedEventArgs e)
+        {
+            LeaderChoiceButton.Visibility = Visibility.Visible;
+            EmployeeChoiceButton.Visibility = Visibility.Visible;
+            RoleChoiceLbl.Visibility = Visibility.Visible;
+            mw.AdminPageTabControle.Visibility = Visibility.Hidden;
+            mw.GuideTabControle.Visibility = Visibility.Hidden;
+        }
+
+        private void ChooseEmployeeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
         }
     }
 }
