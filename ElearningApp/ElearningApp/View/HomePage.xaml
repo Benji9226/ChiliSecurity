@@ -13,6 +13,19 @@
         <Label x:Name="RoleChoiceLbl" Content="Choose your role" HorizontalAlignment="Left" Margin="253,186,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Foreground="#FFFFFEFE"/>
         <Button x:Name="LeaderChoiceButton" Content="Leader" HorizontalAlignment="Left" Margin="58,263,0,0" VerticalAlignment="Top" Height="100" Width="171" Click="LeaderChoiceButton_Click"/>
         <Button x:Name="EmployeeChoiceButton" Content="Employee" HorizontalAlignment="Left" Margin="591,263,0,0" VerticalAlignment="Top" Height="100" Width="177" Click="EmployeeChoiceButton_Click"/>
-        <ListBox x:Name="ChooseEmployeeListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="302,287,300,36" SelectionChanged="ChooseEmployeeListBox_SelectionChanged"/>
+        <ListBox x:Name="ChooseEmployeeListBox" Margin="302,287,300,36" Visibility="Hidden">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="FirstName"/>
+                                <Binding Path="LastName"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Page>

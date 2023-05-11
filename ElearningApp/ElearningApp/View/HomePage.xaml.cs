@@ -48,6 +48,8 @@ namespace ElearningApp.View.Pages
             EmployeeChoiceButton.Visibility = Visibility.Hidden;
             RoleChoiceLbl.Visibility = Visibility.Hidden;
             mw.GuideTabControle.Visibility = Visibility.Visible;
+            ChooseEmployeeListBox.Visibility = Visibility.Visible;
+            ChooseEmployeeListBox.ItemsSource = employeeVM.LoadEmployees();
         }
 
         private void TakeNewRoleBtn_Click(object sender, RoutedEventArgs e)
@@ -57,10 +59,6 @@ namespace ElearningApp.View.Pages
             RoleChoiceLbl.Visibility = Visibility.Visible;
             mw.AdminPageTabControle.Visibility = Visibility.Hidden;
             mw.GuideTabControle.Visibility = Visibility.Hidden;
-        }
-
-        private void ChooseEmployeeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
         }
     }
 }
