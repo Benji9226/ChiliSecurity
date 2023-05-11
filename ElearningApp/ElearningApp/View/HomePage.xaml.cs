@@ -28,8 +28,8 @@ namespace ElearningApp.View.Pages
         {
             InitializeComponent();
             this.mw = mw;
-            mw.AdminPageTabControle.Visibility = Visibility.Hidden;
-            mw.GuideTabControle.Visibility = Visibility.Hidden;
+            mw.AdminPageTabControl.Visibility = Visibility.Hidden;
+            mw.GuideTabControl.Visibility = Visibility.Hidden;
         }
 
         private void LeaderChoiceButton_Click(object sender, RoutedEventArgs e)
@@ -37,8 +37,8 @@ namespace ElearningApp.View.Pages
             LeaderChoiceButton.Visibility = Visibility.Hidden;
             EmployeeChoiceButton.Visibility = Visibility.Hidden;
             RoleChoiceLbl.Visibility = Visibility.Hidden;
-            mw.AdminPageTabControle.Visibility = Visibility.Visible;
-            mw.GuideTabControle.Visibility = Visibility.Visible;
+            mw.AdminPageTabControl.Visibility = Visibility.Visible;
+            mw.GuideTabControl.Visibility = Visibility.Visible;
         }
 
         private void EmployeeChoiceButton_Click(object sender, RoutedEventArgs e)
@@ -47,7 +47,7 @@ namespace ElearningApp.View.Pages
             LeaderChoiceButton.Visibility = Visibility.Hidden;
             EmployeeChoiceButton.Visibility = Visibility.Hidden;
             RoleChoiceLbl.Visibility = Visibility.Hidden;
-            mw.GuideTabControle.Visibility = Visibility.Visible;
+            mw.GuideTabControl.Visibility = Visibility.Visible;
             ChooseEmployeeListBox.Visibility = Visibility.Visible;
             ChooseEmployeeListBox.ItemsSource = employeeVM.LoadEmployees();
         }
@@ -57,8 +57,8 @@ namespace ElearningApp.View.Pages
             LeaderChoiceButton.Visibility = Visibility.Visible;
             EmployeeChoiceButton.Visibility = Visibility.Visible;
             RoleChoiceLbl.Visibility = Visibility.Visible;
-            mw.AdminPageTabControle.Visibility = Visibility.Hidden;
-            mw.GuideTabControle.Visibility = Visibility.Hidden;
+            mw.AdminPageTabControl.Visibility = Visibility.Hidden;
+            mw.GuideTabControl.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -44,7 +44,6 @@ namespace ElearningApp.Persistence
         public Quiz GetByCategory(string category)
         {
             Quiz quiz = new Quiz(0, "");
-            List<Quiz> tempQuizList = new List<Quiz>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -65,7 +64,6 @@ namespace ElearningApp.Persistence
 
         private List<Question> GetQuestionsByQuizId(int quiz_id)
         {
-            Question question = new Question("", null, "", "");
             List<Question> tempQuestionList = new List<Question>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -80,7 +78,7 @@ namespace ElearningApp.Persistence
                             string[] possibleAnswerArray = reader["possible_answers"].ToString().Split(';');
                             string correctAnswer = reader["correct_answer"].ToString();
                             string category = reader["category"].ToString();
-                            question = new Question(questionText, possibleAnswerArray, correctAnswer, category);
+                            Question question = new Question(questionText, possibleAnswerArray, correctAnswer, category);
                             tempQuestionList.Add(question);
                         }
                     }

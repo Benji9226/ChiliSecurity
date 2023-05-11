@@ -33,9 +33,9 @@ namespace ElearningApp.View.AdminPages
             if (GuideCategoryComboBox.SelectedItem != null)
             {
                 string selectedItem = ((ComboBoxItem)GuideCategoryComboBox.SelectedItem).Content.ToString();
-                mvm = new MainViewModel(selectedItem); // reuse the existing MainViewModel instance
+                mvm = new MainViewModel(selectedItem);
                 DataContext = mvm;
-                guidesInCategoryListBox.ItemsSource = mvm.GuidesVM; // set the ItemsSource to the new guides for the selected category
+                guidesInCategoryListBox.ItemsSource = mvm.GuidesVM;
             }
         }
 

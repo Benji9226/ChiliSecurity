@@ -51,12 +51,5 @@ namespace ElearningApp
         {
             MainPage.Content = new AdminPage();
         }
-
-       
-
-      
-      
-
-
     }
 }

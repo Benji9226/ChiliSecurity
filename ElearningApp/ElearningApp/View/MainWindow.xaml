@@ -18,8 +18,8 @@
         <Rectangle Stroke="Black" Margin="0,0,1200,0" Fill="Black"/>
         <StackPanel Margin="0,206,1200,0">
             <Button Content="Home" Click="HomePage_Click" FontSize="24"/>
-            <Button x:Name="GuideTabControle" Content="Guides" Click="GuidesPage_Click" FontSize="24"/>
-            <Button x:Name="AdminPageTabControle" Content="Admin" Click="AdminPage_Click" FontSize="24" />
+            <Button x:Name="GuideTabControl" Content="Guides" Click="GuidesPage_Click" FontSize="24"/>
+            <Button x:Name="AdminPageTabControl" Content="Admin" Click="AdminPage_Click" FontSize="24" />
         </StackPanel>
         <Frame x:Name="MainPage" Margin="240,0,0,0" NavigationUIVisibility="Hidden" Width="1200"/>
         <Grid Margin="-11,0,1200,678">

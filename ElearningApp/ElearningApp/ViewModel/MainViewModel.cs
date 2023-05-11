@@ -31,13 +31,11 @@ namespace ElearningApp.ViewModel
 
         public MainViewModel(string guideCategory)
         {
-            foreach (Guide guide in guideRepo.GetAll())
+            var filteredGuides = guideRepo.GetAll().Where(guide => guide.Category == guideCategory);
+            foreach (Guide guide in filteredGuides)
             {
                 GuideViewModel guideVM = new(guide);
-                if (guideVM.Category == guideCategory)
-                {
-                    GuidesVM.Add(guideVM);
-                }
+                GuidesVM.Add(guideVM);
             }
         }
 
