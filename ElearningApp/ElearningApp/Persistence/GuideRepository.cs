@@ -45,8 +45,6 @@ namespace ElearningApp.Persistence
 
         public List<Guide> GetAll()
         {
-            guides = new List<Guide>();
-            using(SqlConnection conn = new SqlConnection(connectionString)) 
             IsCacheValidCheck();
             return guides;
         }
