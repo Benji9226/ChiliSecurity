@@ -104,7 +104,7 @@ namespace ElearningApp.ViewModel
 
         private void CreateGuideFile(Guide guide)
         {
-            byte[] data = guideRepo.GetByNameAndCategory(guide.GuideName, guide.Category).LearningMaterial;
+            byte[] data = guide.LearningMaterial;
             Directory.CreateDirectory("Guides").CreateSubdirectory(guide.Category);
             using (BinaryWriter writer = new BinaryWriter(File.OpenWrite($"Guides\\{guide.Category}\\{guide.GuideName}.pdf")))
             {
