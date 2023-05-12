@@ -37,7 +37,10 @@ namespace ElearningApp.ViewModel
         public void LoadGuide(string guideToLoadName, string guideToLoadCategory)
         {
             Guide guide = guideRepo.GetByNameAndCategory(guideToLoadName, guideToLoadCategory);
-            if (!File.Exists($"Guides\\{guideToLoadCategory}\\{guide.GuideName}.pdf")) { CreateGuideFile(guide.GuideName, guide.Category); }
+            if (!File.Exists($"Guides\\{guideToLoadCategory}\\{guide.GuideName}.pdf")) 
+            { 
+                CreateGuideFile(guide); 
+            }
             ShowGuide(guide);
         }
 
@@ -99,11 +102,11 @@ namespace ElearningApp.ViewModel
             guideRepo.Delete(guide);
         }
 
-        private void CreateGuideFile(string guideName, string guideCategory)
+        private void CreateGuideFile(Guide guide)
         {
-            byte[] data = guideRepo.GetByNameAndCategory(guideName, guideCategory).LearningMaterial;
-            Directory.CreateDirectory("Guides").CreateSubdirectory(guideCategory);
-            using (BinaryWriter writer = new BinaryWriter(File.OpenWrite($"Guides\\{guideCategory}\\{guideName}.pdf")))
+            byte[] data = guideRepo.GetByNameAndCategory(guide.GuideName, guide.Category).LearningMaterial;
+            Directory.CreateDirectory("Guides").CreateSubdirectory(guide.Category);
+            using (BinaryWriter writer = new BinaryWriter(File.OpenWrite($"Guides\\{guide.Category}\\{guide.GuideName}.pdf")))
             {
                 writer.Write(data);
             }
@@ -114,7 +117,5 @@ namespace ElearningApp.ViewModel
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Guides\\{guideToShow.Category}\\{guideToShow.GuideName}.pdf");
             Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
         }
-
-     
     }
 }
