@@ -23,11 +23,12 @@ namespace ElearningApp.View.Pages
     public partial class HomePage : Page
     {
         MainWindow mw;
-        EmployeeViewModel employeeVM;
+        EmployeeViewModel employeeVM = new EmployeeViewModel();
         public HomePage(MainWindow mw)
         {
             InitializeComponent();
             this.mw = mw;
+            ChooseEmployeeListBox.ItemsSource = employeeVM.LoadEmployees();
             mw.AdminPageTabControl.Visibility = Visibility.Hidden;
             mw.GuideTabControl.Visibility = Visibility.Hidden;
         }
@@ -48,8 +49,7 @@ namespace ElearningApp.View.Pages
             EmployeeChoiceButton.Visibility = Visibility.Hidden;
             RoleChoiceLbl.Visibility = Visibility.Hidden;
             mw.GuideTabControl.Visibility = Visibility.Visible;
-            ChooseEmployeeListBox.Visibility = Visibility.Visible;
-            ChooseEmployeeListBox.ItemsSource = employeeVM.LoadEmployees();
+            ChooseEmployeeListBox.Visibility = Visibility.Hidden;
         }
 
         private void TakeNewRoleBtn_Click(object sender, RoutedEventArgs e)

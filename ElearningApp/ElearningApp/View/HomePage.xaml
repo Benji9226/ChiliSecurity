@@ -10,10 +10,10 @@
 
     <Grid>
         <Label x:Name="Welcome_Label" Content="Welcome to Chili Security&#xA;         E-Learning App&#xA;" HorizontalAlignment="Left" Margin="88,24,0,0" VerticalAlignment="Top" Foreground="White" FontSize="48" FontWeight="Bold" Height="157" Width="680"/>
-        <Label x:Name="RoleChoiceLbl" Content="Choose your role" HorizontalAlignment="Left" Margin="253,186,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Foreground="#FFFFFEFE"/>
-        <Button x:Name="LeaderChoiceButton" Content="Leader" HorizontalAlignment="Left" Margin="58,263,0,0" VerticalAlignment="Top" Height="100" Width="171" Click="LeaderChoiceButton_Click"/>
-        <Button x:Name="EmployeeChoiceButton" Content="Employee" HorizontalAlignment="Left" Margin="591,263,0,0" VerticalAlignment="Top" Height="100" Width="177" Click="EmployeeChoiceButton_Click"/>
-        <ListBox x:Name="ChooseEmployeeListBox" Margin="302,287,300,36" Visibility="Hidden">
+        <Label x:Name="RoleChoiceLbl" Content="Choose your role" HorizontalAlignment="Center" Margin="0,154,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Foreground="#FFFFFEFE"/>
+        <Button x:Name="LeaderChoiceButton" Content="Leader" HorizontalAlignment="Left" Margin="43,304,0,0" VerticalAlignment="Top" Height="100" Width="171" Click="LeaderChoiceButton_Click"/>
+        <Button x:Name="EmployeeChoiceButton" Content="Employee" HorizontalAlignment="Left" Margin="592,303,0,0" VerticalAlignment="Top" Height="44" Width="176" Click="EmployeeChoiceButton_Click"/>
+        <ListBox x:Name="ChooseEmployeeListBox" Margin="438,352,32,10">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
