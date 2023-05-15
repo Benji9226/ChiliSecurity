@@ -12,12 +12,17 @@ namespace ElearningApp.Persistence
     public class EmployeeRepository
     {
         private List<Employee> employees;
+        private bool isCacheValid;
         string connectionString = "Server=10.56.8.36; database=P3_DB_2023_03; user id=P3_PROJECT_USER_03; password=OPENDB_03; TrustServerCertificate=true;";
 
+        public EmployeeRepository()
+        {
+            employees = new List<Employee>();
+            isCacheValid = false;
+        }
 
         public void AddEmployee(Employee employeeToAdd)
         {
-            employees = new List<Employee>();
             employees.Add(employeeToAdd);
             string sqlQuery = "INSERT INTO Employee(FirstName, LastName, Email, AmountGuidesCompleted) VALUES(@firstName, @lastName, @email, @amountGuidesCompleted)";
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -34,7 +39,6 @@ namespace ElearningApp.Persistence
 
         public List<Employee> GetAllEmployees()
         {
-            employees = new List<Employee>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -50,6 +54,36 @@ namespace ElearningApp.Persistence
                 }
             }
             return employees;
+        }
+
+        public void Update(Employee employeeToUpdate, int AmountGuidesCompletedToUpdate)
+        {
+            IsCacheValidCheck();
+            foreach (Employee employee in employees)
+            {
+                if (employee.Email == employeeToUpdate.Email)
+                {
+                    string sqlQuery = "UPDATE Employee SET AmountGuidesCompleted = @AmountGuidesCompleted WHERE Email = @Email";
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+                        cmd.Parameters.Add("@Email", SqlDbType.NVarChar).Value = employeeToUpdate.Email;
+                        cmd.Parameters.Add("@AmountGuidesCompleted", SqlDbType.NVarChar).Value = AmountGuidesCompletedToUpdate;
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                    break;
+                }
+            }
+        }
+
+        private void IsCacheValidCheck()
+        {
+            if (!isCacheValid)
+            {
+                employees = GetAllEmployees();
+                isCacheValid = true;
+            }
         }
 
     }

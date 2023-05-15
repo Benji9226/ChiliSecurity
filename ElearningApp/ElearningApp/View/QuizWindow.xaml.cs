@@ -22,14 +22,16 @@ namespace ElearningApp.View
     public partial class QuizWindow : Window
     {
         QuizViewModel qvm = new QuizViewModel();
-        Quiz quiz;
+        private Quiz quiz;
+        private EmployeeViewModel selectedEmployee;
         private int currentQuestion = 0;
         private int correctAnswers = 0;
 
-        public QuizWindow(string category)
+        public QuizWindow(string category, EmployeeViewModel selectedEmployee)
         {
             InitializeComponent();
             quiz = qvm.GetQuiz(category);
+            this.selectedEmployee = selectedEmployee;
             StartQuiz();
         }
 
@@ -51,7 +53,15 @@ namespace ElearningApp.View
                 answerFour.Content = quiz.Questions.ElementAt(currentQuestion).PossibleAnswers[3];
             }
             else
-                MessageBox.Show($"You have completed the Quiz with {correctAnswers} / {quiz.Questions.Count} correct.");
+            {
+                MessageBox.Show($"{selectedEmployee.FirstName} {selectedEmployee.LastName} you have completed the Quiz with {correctAnswers} / {quiz.Questions.Count} correct.");
+                // If Employee got 100% correct
+                if (correctAnswers == quiz.Questions.Count)
+                {
+                    selectedEmployee.AmountGuidesCompleted++;
+                    selectedEmployee.UpdateEmployee();
+                }
+            }
         }
 
         private void Answer_Click(object sender, RoutedEventArgs e)

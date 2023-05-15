@@ -39,8 +39,8 @@ namespace ElearningApp.View.GuidePages
 
         private void OpenQuizButton_Click(object sender, RoutedEventArgs e)
         {
-            QuizWindow quizWindow = new QuizWindow(guideCategory.Content.ToString());
-            quizWindow.Show();
+            EmployeeSelectionWindow employeeSelectionWindow = new EmployeeSelectionWindow(guideCategory.Content.ToString());
+            employeeSelectionWindow.Show();
         }
     }
 }
