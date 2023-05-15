@@ -31,12 +31,10 @@ namespace ElearningApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        EmployeeViewModel employeeVM = new EmployeeViewModel();
         public MainWindow()
         {
             InitializeComponent();
             MainPage.Content = new HomePage(this);
-
         }
         private void HomePage_Click(object sender, RoutedEventArgs e)
         {
