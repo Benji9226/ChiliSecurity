@@ -40,7 +40,7 @@ namespace ElearningApp.View.Pages
         private void NewEmployeeButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.MainPage.NavigationService.Navigate(new EmployeePage());
+            mainWindow.MainPage.NavigationService.Navigate(new AddEmployeePage());
         }
     }
 }

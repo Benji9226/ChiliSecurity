@@ -17,18 +17,13 @@ using System.Windows.Shapes;
 namespace ElearningApp.View.AdminPages
 {
     /// <summary>
-    /// Interaction logic for EmployeePage.xaml
+    /// Interaction logic for AddEmployeePage.xaml
     /// </summary>
-    public partial class EmployeePage : Page
+    public partial class AddEmployeePage : Page
     {
-        EmployeeViewModel empViewModel = new EmployeeViewModel();
+        EmployeeViewModel employeeVM = new EmployeeViewModel();
 
-        private string firstName;
-        private string lastName;
-        private string email;
-        private int amountGuideCompleted = 0;
-
-        public EmployeePage()
+        public AddEmployeePage()
         {
             InitializeComponent();
         }
@@ -36,9 +31,9 @@ namespace ElearningApp.View.AdminPages
         private void AddEmployeeButton_Click(object sender, RoutedEventArgs e)
         {
 
-            firstName = FirstNameTextBox.Text;
-            lastName = LastNameTextBox.Text;
-            email = EmailTextBox.Text;
+            string firstName = FirstNameTextBox.Text;
+            string lastName = LastNameTextBox.Text;
+            string email = EmailTextBox.Text;
 
             if (firstName == "" || lastName == "" || email == "")
             {
@@ -46,11 +41,9 @@ namespace ElearningApp.View.AdminPages
             }
             else
             {
-                empViewModel.UploadEmployee(firstName, lastName, email, amountGuideCompleted);
+                employeeVM.UploadEmployee(firstName, lastName, email, 0);
                 MessageBox.Show("Employee has been added");
-
             }
-
         }
     }
 }

@@ -23,7 +23,6 @@ namespace ElearningApp.View.Pages
     public partial class HomePage : Page
     {
         MainWindow mw;
-        EmployeeViewModel employeeVM = new EmployeeViewModel();
         public HomePage(MainWindow mw)
         {
             InitializeComponent();
@@ -43,7 +42,6 @@ namespace ElearningApp.View.Pages
 
         private void EmployeeChoiceButton_Click(object sender, RoutedEventArgs e)
         {
-            employeeVM = new EmployeeViewModel();
             LeaderChoiceButton.Visibility = Visibility.Hidden;
             EmployeeChoiceButton.Visibility = Visibility.Hidden;
             RoleChoiceLbl.Visibility = Visibility.Hidden;
