@@ -52,7 +52,6 @@ namespace ElearningApp.ViewModel
             if (guideName != "" && filePath != "" && category != "")
             {
                 List<Guide> guideList = guideRepo.GetAll();
-
                 foreach (Guide guide in guideList)
                 {
                     if (guideName == guide.GuideName && category == guide.Category)
@@ -61,7 +60,6 @@ namespace ElearningApp.ViewModel
                         nameAlreadyExist = true;
                         break;
                     }
-
                 }
 
                 if (nameAlreadyExist == false)
@@ -75,16 +73,13 @@ namespace ElearningApp.ViewModel
                     }
                     mSBox = "Guide is now uploaded.";
                 }
-
-
                 MessageBox.Show(mSBox);
-
             }
+
             else
             {
                 MessageBox.Show("Please fill out all boxes");
             }
-
         }
 
         public void UpdateGuide(Guide guide, string newGuideName, string filePath, string newGuideCategory)
