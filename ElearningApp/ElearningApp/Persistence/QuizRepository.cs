@@ -11,11 +11,13 @@ namespace ElearningApp.Persistence
     public class QuizRepository
     {
         private List<Quiz> quizzes;
+        private bool isCacheValid;
         string connectionString = "Server=10.56.8.36; database=P3_DB_2023_03; user id=P3_PROJECT_USER_03; password=OPENDB_03; TrustServerCertificate=true;";
 
         public QuizRepository()
         {
-            quizzes = GetAll();
+            quizzes = new List<Quiz>();
+            isCacheValid = false;
         }
 
         public List<Quiz> GetAll()
@@ -25,13 +27,13 @@ namespace ElearningApp.Persistence
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand($"SELECT * FROM QuizTest2", conn);
+                SqlCommand cmd = new SqlCommand($"SELECT * FROM Quiz", conn);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        quiz.Id = (int)reader["quiz_id"];
-                        quiz.Category = reader["quiz_category"].ToString();
+                        quiz.Id = (int)reader["QuizID"];
+                        quiz.Category = reader["QuizCategory"].ToString();
                         quiz.Questions = GetQuestionsByQuizId(quiz.Id);
                         tempQuizList.Add(quiz);
                         quiz = new Quiz(0, "");
@@ -43,17 +45,18 @@ namespace ElearningApp.Persistence
 
         public Quiz GetByCategory(string category)
         {
+            IsCacheValidCheck();
             Quiz quiz = new Quiz(0, "");
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand($"SELECT * FROM QuizTest2 WHERE quiz_category='{category}'", conn);
+                SqlCommand cmd = new SqlCommand($"SELECT * FROM Quiz WHERE QuizCategory='{category}'", conn);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        quiz.Id = (int)reader["quiz_id"];
-                        quiz.Category = reader["quiz_category"].ToString();
+                        quiz.Id = (int)reader["QuizID"];
+                        quiz.Category = reader["QuizCategory"].ToString();
                         quiz.Questions = GetQuestionsByQuizId(quiz.Id);
                         return quiz;
                     }
@@ -69,15 +72,15 @@ namespace ElearningApp.Persistence
             {
                 conn.Open();
                 {
-                    SqlCommand cmd = new SqlCommand($"SELECT * FROM Question WHERE quiz_id ='{quiz_id}'", conn);
+                    SqlCommand cmd = new SqlCommand($"SELECT * FROM Question WHERE QuizID ='{quiz_id}'", conn);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            string questionText = reader["question_text"].ToString();
-                            string[] possibleAnswerArray = reader["possible_answers"].ToString().Split(';');
-                            string correctAnswer = reader["correct_answer"].ToString();
-                            string category = reader["category"].ToString();
+                            string questionText = reader["QuestionText"].ToString();
+                            string[] possibleAnswerArray = reader["PossibleAnswer"].ToString().Split(';');
+                            string correctAnswer = reader["CorrectAnswer"].ToString();
+                            string category = reader["Category"].ToString();
                             Question question = new Question(questionText, possibleAnswerArray, correctAnswer, category);
                             tempQuestionList.Add(question);
                         }
@@ -85,6 +88,15 @@ namespace ElearningApp.Persistence
                 }
             }
             return tempQuestionList;
+        }
+
+        private void IsCacheValidCheck()
+        {
+            if (!isCacheValid)
+            {
+                quizzes = GetAll();
+                isCacheValid = true;
+            }
         }
     }
 }
