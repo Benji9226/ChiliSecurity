@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ElearningApp.ViewModel
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel
     {
         private GuideRepository guideRepo = new GuideRepository();
         public List<GuideViewModel> GuidesVM { get; set; } = new();
@@ -18,8 +18,9 @@ namespace ElearningApp.ViewModel
         public GuideViewModel SelectedGuideVM
         {
             get { return guideViewModel; }
-            set { guideViewModel = value; OnPropertyChanged("SelectedGuideVM"); }
+            set { guideViewModel = value; }
         }
+
         public MainViewModel()
         {
             foreach (Guide guide in guideRepo.GetAll())
@@ -36,16 +37,6 @@ namespace ElearningApp.ViewModel
             {
                 GuideViewModel guideVM = new(guide);
                 GuidesVM.Add(guideVM);
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if (propertyChanged != null)
-            {
-                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }
